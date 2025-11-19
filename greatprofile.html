@@ -1,0 +1,472 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['name']) || !isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login if not logged in
+    exit();
+}
+
+// Retrieve session data
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Tabs</title>
+
+<link rel="stylesheet" 
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -250px; /* Hidden by default */
+            width: 230px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+		
+		.sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+
+.close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+
+
+
+
+
+
+
+.container{
+height:95vh;
+width:80vw;
+position: center;
+background-color:#B0C4DE;
+text-align:center;
+ margin-left:150px;
+margin-Top:10px;
+ margin-right:700px;
+ padding: 70px;
+  position: relative;
+right: -300px; 
+}
+       
+
+        /* Individual tab */
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+			width: 550px;
+			height: 80px;
+			margin-top: 10px;
+            font-size: 1.3em;
+            border-bottom: 5px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab:last-child {
+            border-bottom: none;
+        }
+
+        .tab:hover {
+            background-color: #FFC0CB;
+        }
+
+        .tab-icon {
+            width: 55px;
+            height: 50px;
+            margin-right: 15px;
+            color: #DB7093;
+        }
+
+        .tab-text {
+            flex-grow: 10;
+			color: #E6E6FA;
+        }
+
+        .tab-arrow {
+            color: #DB7093;
+        }
+
+
+/* Reset basic margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.profile-container {
+    text-align: center;
+	margin-top: -50px;
+    background-color: #fff;
+    padding: 10px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 470px;
+	 position: relative;
+    		right: -35px; 
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+
+.bio {
+    margin: 5px 0 5px;
+    font-size: 16px;
+    color: #777;
+}
+
+
+
+
+
+
+        
+
+        /* Logout confirmation modal */
+        .modal {
+            position: fixed;
+            top: 500;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+			height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+
+        .modal-content {
+            width: 500px;
+			margin-top: 10px;
+            background-color: #F0F8FF;
+            border-radius: 80px;
+            padding: 50px;
+			height: 50vh;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            margin-top: 50px;
+			height: 50vh;
+            font-size: 20px;
+        }
+
+        .modal-content p {
+            color: #006400;
+			margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .modal-content button {
+            padding: 10px 180px;
+            border: none;
+			margin-top: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 15px 10px;
+        }
+
+        .cancel-btn {
+            background-color: #E6E6FA;
+        }
+
+        .logout-btn {
+            background-color: #FFC0CB;
+            color: White;
+        }
+
+        /* Show modal when activated */
+        .modal.show {
+            visibility: visible;
+            opacity: 5;
+			height: 100vh;
+        }
+    h4{
+		color:purple;
+        }
+
+
+
+
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+	<span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+       
+<body bgcolor="#E6E6FA">
+    
+<div class="tab-content-container">
+
+</div>
+
+  
+<div class="container">
+    
+    <div class="profile-container">
+    <div class="avatar">
+        <label for="upload-image">
+            <img id="profile-pic" class="profile-pic" src="profile.png" alt="Profile Picture">
+        </label>
+        <input type="file" id="upload-image" accept="image/*" style="display: none;">
+    </div>
+    <button id="upload-btn">📤 Upload Image</button>
+
+    <p class="bio" id="username-display">Username</p>
+</div>
+<div class="right-sidebar">
+        
+        <div class="tab">
+            <span class="tab-icon">✏️</span>
+            <span class="tab-text"><a href="editprofile.html" style="text-decoration:none;"><b>Edit Profile</b></a></span>
+            <span class="tab-arrow">👉🏻</span>
+
+        </div>
+        <div class="tab">
+            <span class="tab-icon">🤖</span>
+            <span class="tab-text"><a href="Support.html" style="text-decoration:none;"><b>Support</b></a></span>
+            <span class="tab-arrow">👉🏻</span>
+        </div>
+       <div class="tab">
+            <span class="tab-icon">📲</span>
+            <span class="tab-text"><a href="contactus.html" style="text-decoration:none;"><b>Contact Us</b></a></span>
+            <span class="tab-arrow">👉🏻</span>
+        </div>
+		<div class="tab">
+            <span class="tab-icon">➡️</span>
+            <span class="tab-text"><a href="Rating.html" style="text-decoration:none;"><b>Rating</b></a></span>
+            <span class="tab-arrow">👉🏻</span>
+        </div>
+		 <div class="tab">
+		 <span class="tab-icon">🚫</span>
+		 <span class="tab-text">
+		 <span onclick="showModal()"><b><h4>Logout</h4></b></span></span>
+		 <span class="tab-arrow">👉🏻</span>
+    
+</div>
+    <!-- Modal Section -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h1>Logout</h1>
+            <p>Are you sure you want to logout?</p>
+            <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+            <button class="logout-btn"><a href="1interface.html" style="text-decoration:none;">Logout</button>
+        </div>
+    </div>
+		
+    </div>
+    </div>
+</div>
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const closeButton = document.querySelector(".close-btn");
+        const sidebar = document.querySelector(".sidebar");
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle("active");
+        }
+
+        // Open sidebar when clicking menu icon
+        menuToggle.addEventListener("click", toggleSidebar);
+
+        // Close sidebar when clicking the close button (×)
+        closeButton.addEventListener("click", toggleSidebar);
+    });
+	
+	
+	
+        // Function to show modal
+        function showModal() {
+            document.getElementById("logoutModal").classList.add("show");
+        }
+
+        // Function to hide modal
+        function hideModal() {
+            document.getElementById("logoutModal").classList.remove("show");
+        }
+
+        // Function to perform logout action
+        function logout() {
+            alert("Logging out...");
+            hideModal();
+        }
+		
+		
+		
+		document.addEventListener("DOMContentLoaded", function () {
+    // Get the stored username from localStorage
+    let storedUsername = localStorage.getItem("username");
+
+    if (storedUsername) {
+        // Display the stored username in the profile bio
+        document.getElementById("username-display").textContent = storedUsername;
+    }
+
+    // Get the stored profile image URL from localStorage (only if already uploaded)
+    let storedImage = localStorage.getItem("profileImage");
+    if (storedImage) {
+        // Display the profile image if it exists in localStorage
+        document.getElementById("profile-pic").src = storedImage;
+    }
+});
+
+// Handle Image Upload (image remains unchanged unless user uploads a new one)
+document.getElementById("upload-image").addEventListener("change", function(event) {
+    let file = event.target.files[0];
+    if (file) {
+        let reader = new FileReader();
+        reader.onloadend = function() {
+            let imageUrl = reader.result;
+            localStorage.setItem("profileImage", imageUrl); // Save image URL in localStorage
+            document.getElementById("profile-pic").src = imageUrl; // Update the image in profile
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Trigger image upload when clicking the button
+document.getElementById("upload-btn").addEventListener("click", function () {
+    document.getElementById("upload-image").click();
+});
+
+// Handle Username Update (user can change their username)
+document.getElementById("change-username-btn").addEventListener("click", function () {
+    let newUsername = prompt("Enter your new username:");
+    if (newUsername) {
+        // Save the new username in localStorage
+        localStorage.setItem('username', newUsername);
+        document.getElementById("username-display").textContent = newUsername;
+    }
+});
+
+// Logout functionality (clear localStorage and redirect)
+function showModal() {
+    document.getElementById("logoutModal").classList.add("show");
+}
+
+function hideModal() {
+    document.getElementById("logoutModal").classList.remove("show");
+}
+
+function logout() {
+    localStorage.removeItem("username");
+    localStorage.removeItem("profileImage");
+    window.location.href = '/login'; // Redirect to login page
+}
+	
+    </script>
+
+</body>
+</html>

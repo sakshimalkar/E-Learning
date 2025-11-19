@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - eLearning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      display: flex;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e3f;
+      color: #fff;
+      height: 100vh;
+      padding-top: 40px;
+      position: fixed;
+    }
+    .sidebar a {
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #34346c;
+      padding-left: 30px;
+    }
+    .main-content {
+      margin-left: 200px;
+      width: calc(100% - 200px);
+    }
+    header {
+      padding: 30px;
+      background: linear-gradient(90deg, #8796e3, #a98a90);
+      color: white;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      text-shadow: 2px 2px #4a0cb9;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .tile {
+      background-color: #b3e0f2;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #d40000;
+      font-weight: bold;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+    }
+    .tile .icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+    .dashboard-footer {
+      margin: 50px 30px 20px 30px;
+      padding: 25px;
+      background: linear-gradient(90deg, #8796e3, #a98a90);
+      color: #292625;
+      border-radius: 20px;
+    }
+    .dashboard-footer h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    .announcement marquee {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+  <script>
+    function confirmLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        window.location.href = '1interface.html';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="adminstu.html">👩🏻‍🎓 Manage Students</a>
+    <a href="admincou.html">📚 Manage Courses</a>
+    <a href="adminpay.html">💳 Payments</a>
+	
+    <a href="admincertificate.html">📜 Certificates</a>
+	
+    <a onclick="confirmLogout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>🎓 Payments:</h1>
+      <p>📊Welcome to the Payment Dashboard - Monitor and manage all student payments.</p>
+    </header>
+
+    <div class="card-container">
+      <a href="pview.php" class="tile">
+        <div class="icon">📚</div>
+        JAVA Payment
+      </a>
+
+      <a href="hview.php" class="tile">
+        <div class="icon">📝</div>
+        HTML Payment
+      </a>
+		<a href="phpview.php" class="tile">
+        <div class="icon">📝</div>
+        PHP Payment
+      </a>
+		<a href="dotview.php" class="tile">
+        <div class="icon">📝</div>
+        DOTNET Payment
+      </a>
+
+      
+    </div>
+
+    <div class="dashboard-footer">
+      <h3>📢 Notice</h3>
+      <p>🚀 Keep up with the latest updates and improvements!</p>
+      <div class="announcement">
+        <marquee behavior="scroll" direction="left">📢 New features coming soon! Stay tuned.</marquee>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

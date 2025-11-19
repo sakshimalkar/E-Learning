@@ -1,0 +1,139 @@
+<!-- quizej.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Quiz App with Timer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      background-image: url('certificates/quize.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .container {
+      width: 450px;
+      padding: 20px;
+      margin-top: 80px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+    h1 { text-align: center; }
+    .question { font-weight: bold; margin-bottom: 10px; }
+    .option { display: block; margin-bottom: 10px; }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #428bca;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+    .button:hover { background-color: #3071a9; }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #timer {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz App</h1>
+    <div id="timer" class="result">Time Left: <span id="time">05:00</span></div>
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button id="submit" class="button">Submit</button>
+    <button id="examform-btn" class="button" disabled>Exam Certification Form</button>
+  </div>
+
+  <script>
+    const quizData = [
+      { question: 'What is the default value of an int variable in Java?', options: ['0', 'null', 'undefined', '1'], answer: '0' },
+      { question: 'Which of these is not a Java keyword?', options: ['class', 'interface', 'extends', 'null'], answer: 'null' },
+      { question: 'Which method is used to start a thread in Java?', options: ['start()', 'run()', 'init()', 'execute()'], answer: 'start()' },
+      { question: 'Which package is imported by default in all Java programs?', options: ['java.util', 'java.lang', 'java.io', 'java.net'], answer: 'java.lang' },
+      { question: 'Which of the following is a valid way to create an object in Java?', options: ['ClassName obj = new ClassName();', 'ClassName obj;', 'ClassName obj = ClassName();', 'new ClassName;'], answer: 'ClassName obj = new ClassName();' },
+      { question: 'Which of the following is not a valid Java access modifier?', options: ['private', 'protected', 'public', 'default'], answer: 'default' },
+      { question: 'Which method is used to compare two strings in Java?', options: ['compare()', 'equals()', 'compareTo()', 'compareStrings()'], answer: 'equals()' },
+      { question: 'What is the size of a char in Java?', options: ['1 byte', '2 bytes', '4 bytes', '8 bytes'], answer: '2 bytes' },
+      { question: 'What is the purpose of the finalize() method in Java?', options: ['To destroy an object explicitly', 'To clean up resources before garbage collection', 'To call the main method', 'To handle exceptions'], answer: 'To clean up resources before garbage collection' },
+      { question: 'Which of these is used to handle exceptions in Java?', options: ['try-catch block', 'if-else block', 'throw-catch block', 'error-handling block'], answer: 'try-catch block' }
+    ];
+
+    const quizContainer = document.getElementById('quiz');
+    const resultContainer = document.getElementById('result');
+    const submitButton = document.getElementById('submit');
+    const examformButton = document.getElementById('examform-btn');
+    const timerElement = document.getElementById('time');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let timeLeft = 300;
+    let timerInterval;
+
+    function displayQuestion() {
+      const questionData = quizData[currentQuestion];
+      quizContainer.innerHTML = `<div class='question'>${questionData.question}</div>` +
+        questionData.options.map(option => `<label class='option'><input type='radio' name='quiz' value='${option}'> ${option}</label>`).join('');
+    }
+
+    function checkAnswer() {
+      if (timeLeft <= 0) return;
+      const selectedOption = document.querySelector('input[name="quiz"]:checked');
+      if (selectedOption) {
+        if (selectedOption.value === quizData[currentQuestion].answer) score++;
+        currentQuestion++;
+        currentQuestion < quizData.length ? displayQuestion() : displayResult();
+      } else {
+        alert("Please select an option before submitting.");
+      }
+    }
+
+    function displayResult() {
+      clearInterval(timerInterval);
+      quizContainer.style.display = 'none';
+      submitButton.disabled = true;
+      examformButton.disabled = false;
+      resultContainer.innerHTML = `Time Over or Quiz Completed!<br>You scored ${score} out of ${quizData.length}.`;
+      localStorage.setItem('quizScore', score);
+      localStorage.setItem('userName', 'Sakshi'); // Replace with dynamic value if needed
+      localStorage.setItem('courseName', 'Java Programming'); // Replace with actual course
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          displayResult();
+        } else {
+          timeLeft--;
+          const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+          const seconds = String(timeLeft % 60).padStart(2, '0');
+          timerElement.textContent = `${minutes}:${seconds}`;
+        }
+      }, 1000);
+    }
+
+    submitButton.addEventListener('click', checkAnswer);
+    examformButton.addEventListener('click', () => window.location.href = 'examform.html');
+
+    displayQuestion();
+    startTimer();
+  </script>
+</body>
+</html>

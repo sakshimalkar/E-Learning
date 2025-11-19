@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Boxes</title>
+    
+    <!-- Font Awesome for Menu Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Allow vertical scrolling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding-top: 50px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Initially hidden */
+            width: 250px;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1200; /* Ensure it's above everything */
+            overflow-y: auto; /* Enable scrolling inside sidebar */
+        }
+
+        /* Sidebar Visible */
+        .sidebar.active {
+            left: 0;
+        }
+
+        /* Sidebar Links */
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Close Button */
+        .close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+            padding: -5px -5px;
+            border-radius: 5px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1101;
+        }
+
+        /* Video Container */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Video Box */
+        .video-box {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-box video {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .video-box p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+		.pdf-btn {
+      background-color: #007BFF;
+      color: white;
+       padding: 15px 40px;
+       font-size: 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+	        .pdf-btn:hover {
+            background-color: #0056b3;
+        }
+		
+		    #pdfList {
+      margin-top: 20px;
+      display: none;
+    }
+
+    #pdfList ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #pdfList li {
+      margin: 8px 0;
+    }
+
+    #pdfList a {
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #pdfList a:hover {
+      text-decoration: underline;
+    }
+
+    #pdfViewer {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #ccc;
+      display: none;
+    }
+
+
+        /* Quiz Button */
+        .button {
+            display: inline-block;
+            padding: 13px 35px;
+            font-size: 24px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 30px 0;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Toggle Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <span class="close-btn">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        
+
+
+  <div class="video-container">
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/1_Introduction_to_PHP_Programming_Language___PHP_Tutorial(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>1. Introduction to PHP Programming Language</p>
+    </div>
+	
+	
+	<div class="video-box">
+	<video controls>
+        <source src="E-Learning video/php/2_What_is_server_____How_to_install_xampp_server_in_windows__(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>2. What is server.How to install xampp server in windows?(</p>
+    </div>
+	
+	
+	
+	
+	
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/3__PHP_Syntax___Syntax_overview_of_PHP___How_to_print_srting_using_PHP__(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>3. Syntax overview of PHP How to print srting using PHP </p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/4_What_is_a_Variable____Variable_in_PHP_in_Hindi(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>4. What is variable in PHP</p>
+    </div>
+	
+	
+	 <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/5_How_to_use_variables_in_PHP____PHP_Tutorial_for_Beginners(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>5. How to use variables in PHP</p>
+    </div>
+	
+	
+	
+	
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/6_Concatenate_in_PHP____How_to_use_concatenation_in_PHP__(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>6. How to use concatenation in PHP</p>
+    </div>
+	
+	
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/Arithmetic_Operators_-_Types_of_operators_in_PHP(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>7. Arithmetic Operators- Types of operators in PHP</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/Comparison_Operators_-_Types_of_operators_in_PHP(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>8. Comparison Operators - Types of operators in PHP</p>
+    </div>
+	
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/Logical_and_Ternary_Operators_-Types_of_operators_in_PHP(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>9. Logical and Ternary Operators -Types of operators in PHP</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/php/What_are_Operators_and_types_in_PHP(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>10. What are Operators and types in PHP</p>
+    </div>
+   </div>
+		
+		<button class="pdf-btn" onclick="goToPDFPage()">PDF</button>
+
+    <!-- Quiz Button -->
+    <center>
+        <a href="quizej.html" class="button">Quize</a>
+    </center>
+
+    <!-- JavaScript -->
+    <script>
+	function goToPDFPage() {
+      window.location.href = "pdfp.html"; // Go to the PDF list page
+    }
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const closeButton = document.querySelector(".close-btn");
+            const sidebar = document.querySelector(".sidebar");
+
+            // Function to toggle sidebar visibility
+            function toggleSidebar() {
+                sidebar.classList.toggle("active");
+            }
+
+            // Open sidebar when clicking menu icon
+            menuToggle.addEventListener("click", toggleSidebar);
+
+            // Close sidebar when clicking the close button (×)
+            closeButton.addEventListener("click", toggleSidebar);
+        });
+		function showPdfList() {
+      const listContainer = document.getElementById("pdfList");
+      const list = document.getElementById("pdfLinks");
+      list.innerHTML = ""; // Clear existing
+
+      pdfFiles.forEach(file => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = file;
+        link.onclick = function () {
+          viewPDF(file);
+        };
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+
+      listContainer.style.display = "block";
+    }
+
+    function viewPDF(fileName) {
+      const viewer = document.getElementById("pdfViewer");
+      viewer.src = fileName;
+      viewer.style.display = "block";
+    }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Course - eLearning Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      display: flex;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e3f;
+      color: #fff;
+      height: 100vh;
+      padding-top: 40px;
+      position: fixed;
+    }
+    .sidebar a {
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .sidebar a:hover {
+      background-color: #34346c;
+      padding-left: 30px;
+    }
+    .main-content {
+      margin-left: 220px;
+      width: calc(100% - 220px);
+    }
+    header {
+      padding: 30px;
+      background: linear-gradient(90deg, #8796e3, #a98a90);
+      color: white;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px #4a0cb9;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    .card-container {
+      display: flex;
+      justify-content: center;
+      margin: 40px;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .tile {
+      background-color: #b3e0f2;
+      padding: 30px;
+      width: 240px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #d40000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+    }
+    .tile .icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+    .form-container {
+      display: none;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-container label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .form-container select, 
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #8796e3, #a98a90);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background: linear-gradient(90deg, #6a7ed6, #8d6c74);
+    }
+    .close-btn {
+      background: #ff4d4d;
+      margin-top: 10px;
+    }
+    .dashboard-footer {
+      margin: 50px 30px 20px 30px;
+      padding: 25px;
+      background: linear-gradient(90deg, #8796e3, #a98a90);
+      color: #292625;
+      border-radius: 20px;
+    }
+    .dashboard-footer h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    .announcement marquee {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+  <script>
+    function confirmLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        window.location.href = '1interface.html';
+      }
+    }
+
+    function showForm(formId) {
+      // Hide all forms first
+      document.getElementById('courseForm').style.display = 'none';
+      document.getElementById('videoForm').style.display = 'none';
+
+      // Show selected form
+      document.getElementById(formId).style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function closeForm(formId) {
+      document.getElementById(formId).style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="adminstu.html">👩🏻‍🎓 Manage Students</a>
+    <a href="admincou.html">📚 Manage Courses</a>
+    <a href="adminpay.html">💳 Payments</a>
+    <a href="admincertificate.html">📜 Certificates</a>
+    <a onclick="confirmLogout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>➕ Add Course & Videos</h1>
+      <p>📊Manage your course materials by adding new courses or uploading course videos.</p>
+    </header>
+
+    <div class="card-container">
+      <!-- Add Course Tile -->
+      <div class="tile" onclick="showForm('courseForm')">
+        <div class="icon">📚</div>
+        Add Course
+      </div>
+
+      <!-- Add Video Tile -->
+      <div class="tile" onclick="showForm('videoForm')">
+        <div class="icon">🎥</div>
+        Add Video
+      </div>
+    </div>
+
+    <!-- Add Course Form -->
+    <div class="form-container" id="courseForm">
+      <h2>📚 Add New Course</h2>
+      <form>
+        <label for="cname">Course Name:</label>
+        <input type="text" id="cname" placeholder="Enter course name" required>
+
+        <label for="cdesc">Course Description:</label>
+        <textarea id="cdesc" placeholder="Enter course description" rows="4" required></textarea>
+
+        <label for="cduration">Course Duration:</label>
+        <input type="text" id="cduration" placeholder="e.g. 3 months" required>
+
+        <button type="submit">Add Course</button>
+        <button type="button" class="close-btn" onclick="closeForm('courseForm')">Close</button>
+      </form>
+    </div>
+
+    <!-- Upload Video Form -->
+    <div class="form-container" id="videoForm">
+      <h2>🎥 Upload Course Video</h2>
+      <form>
+        <label for="course">Select Course:</label>
+        <select id="course" required>
+          <option value="">-- Select a Course --</option>
+          <option value="html">HTML</option>
+          <option value="java">Java</option>
+          <option value="php">PHP</option>
+          <option value="dotnet">.NET</option>
+        </select>
+
+        <label for="title">Video Title:</label>
+        <input type="text" id="title" placeholder="Enter video title" required>
+
+        <label for="video">Upload Video:</label>
+        <input type="file" id="video" accept="video/*" required>
+
+        <button type="submit">Upload Video</button>
+        <button type="button" class="close-btn" onclick="closeForm('videoForm')">Close</button>
+      </form>
+    </div>
+
+    <div class="dashboard-footer">
+      <h3>📢 Notice</h3>
+      <p>🚀 Keep building great learning experiences for your students!</p>
+      <div class="announcement">
+        <marquee behavior="scroll" direction="left">📢 You can now add both courses and videos from this panel.</marquee>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - eLearning Platform</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #eef1f7;
+      display: flex;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e3f;
+      color: #fff;
+      height: 100vh;
+      padding-top: 40px;
+      position: fixed;
+    }
+    .sidebar a {
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #34346c;
+      padding-left: 30px;
+    }
+    .main-content {
+      margin-left: 220px;
+      width: calc(100% - 220px);
+      padding: 30px;
+    }
+    header {
+      background: linear-gradient(135deg, #3f87a6, #ebf8e1);
+      color: #333;
+      padding: 40px 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+    }
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    .tile, .certificate-tile {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #1e1e3f;
+    }
+    .tile:hover, .certificate-tile:hover {
+      transform: translateY(-5px);
+    }
+    .tile-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .stats-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .progress-bar-container {
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 10px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #28a745;
+      text-align: center;
+      color: #fff;
+      line-height: 20px;
+      transition: width 1s ease;
+    }
+    marquee {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #d6336c;
+    }
+    .certificate-tile img {
+      width: 120px;
+      height: 70px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1e1e3f;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #34346c;
+    }
+  </style>
+   <script>
+    function confirmLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        window.location.href = '1interface.html';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="dashboard1.html">🏠 Dashboard</a>
+    <a href="adminstu.html">👩‍🎓 Manage Students</a>
+    <a href="admincou.html">📚 Manage Courses</a>
+    <a href="adminpay.html">💵 Payment </a>
+	
+    <a href="admincertificate.html">📜 Certificates</a>
+    
+    
+    <a onclick="confirmLogout()">🚪 Logout</a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="main-content">
+    <header>
+      <h1>Admin Control Panel</h1>
+      <p>Monitor activities, track data, and manage your e-learning platform in one place.</p>
+    </header>
+
+    <div class="tiles">
+      <a href="eview.php" class="tile">
+        <div class="tile-icon">👩‍🎓</div>
+        Total Students Enrolled
+      </a>
+
+      <div class="certificate-tile">
+        <img src="C:\Users\saksh\OneDrive\Desktop\elearning\certificates\certificate.png" alt="Certificate Image">
+        <h3>Certificates</h3>
+        <a href="editcertificate.html" class="btn">Generate Certificate📜</a>
+      </div>
+
+      <a href="eview.php" class="tile">
+        <div class="tile-icon">📈</div>
+        Exam Overview
+      </a>
+
+      <a href="rview.php" class="tile">
+        <div class="tile-icon">⭐</div>
+        Ratings 
+      </a>
+    </div>
+
+     
+    <div class="stats-section">
+      <h3>📊 Platform Insights</h3>
+      <p>Stay on top of your platform’s performance with these highlights:</p>
+      <ul>
+        <li>🎉 <strong>12 new students</strong> joined today — the community is growing!</li>
+        <li>💰 <strong>₹35,000 collected</strong> in payments this week — great progress!</li>
+        <li>🏆 <strong>8 certificates</strong> issued — learners are achieving milestones!</li>
+      </ul>
+
+       <h3>🎯 Goal Tracker</h3>
+      <p>You're doing fantastic! Keep pushing forward to reach your goals.</p>
+
+      <marquee>📢 Announcement: New Advanced Quiz Features launching in next month. Stay connected!</marquee>
+    </div>
+  </div>
+</body>
+</html>

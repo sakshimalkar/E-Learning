@@ -1,0 +1,211 @@
+<!-- examform.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('certificates/exam.avif');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.active { left: 0; }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      color: black;
+      
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 100px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 { margin-bottom: 20px; }
+
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[readonly] {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #5cb85c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover { background-color: #4cae4c; }
+
+    #message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hamburger Icon -->
+<div class="menu-toggle"><i class="fa fa-bars"></i></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <span class="close-btn">&times;</span>
+  <a href="homepage.html">HOME</a>
+  <a href="coursetable.html">COURSES</a>
+  <a href="paymentdirect.html">PAYMENT</a>
+  <a href="greatprofile.html">PROFILE</a>
+  <a href="aboutus.html">ABOUT US</a>
+</div>
+
+<div class="container">
+  <h2>Exam Certification Form</h2>
+  <form id="courseForm" action="http://localhost/elearning/xcreate.php" method="POST" autocomplete="off">
+    <input type="text" id="userName" name="username" placeholder="User Name" required>
+    <input type="text" id="courseName" name="course_name" placeholder="Course Name" required>
+    <input type="number" id="amount" name="fee" value="2000" readonly>
+    <input type="date" id="endDate" name="date" required>
+    <input type="number" id="score" name="score" placeholder="Score" readonly>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="message"></p>
+</div>
+
+<script>
+  // Sidebar toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const closeButton = document.querySelector(".close-btn");
+    const sidebar = document.querySelector(".sidebar");
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("active");
+    }
+
+    menuToggle.addEventListener("click", toggleSidebar);
+    closeButton.addEventListener("click", toggleSidebar);
+  });
+
+  // Prefill fields if empty
+  document.addEventListener('DOMContentLoaded', function () {
+    const scoreEl = document.getElementById('score');
+    const nameEl = document.getElementById('userName');
+    const courseEl = document.getElementById('courseName');
+
+    if (!nameEl.value) {
+      const storedName = localStorage.getItem('userName');
+      if (storedName) nameEl.value = storedName;
+    }
+
+    if (!courseEl.value) {
+      const storedCourse = localStorage.getItem('courseName');
+      if (storedCourse) courseEl.value = storedCourse;
+    }
+
+    scoreEl.value = localStorage.getItem('quizScore') || '0';
+
+    // Save as you type
+    nameEl.addEventListener('input', () => localStorage.setItem('userName', nameEl.value));
+    courseEl.addEventListener('input', () => localStorage.setItem('courseName', courseEl.value));
+  });
+
+  // Submit handler
+  document.getElementById("courseForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const form = this;
+    const formData = new FormData(form);
+
+    fetch(form.action, { method: "POST", body: formData })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("message").innerText = data;
+        // Keep data in localStorage so it's remembered
+        localStorage.setItem('userName', document.getElementById('userName').value);
+        localStorage.setItem('courseName', document.getElementById('courseName').value);
+      })
+      .catch(error => {
+        document.getElementById("message").innerText = "Error: " + error;
+      });
+  });
+</script>
+
+</body>
+</html>

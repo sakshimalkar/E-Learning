@@ -1,0 +1,22 @@
+
+.circle-with-text {
+  background: #FFF0F5;
+  justify-content: center;
+  align-items: center;
+  border-radius: 300%;
+  text-align: center;
+  margin: 10px 25px;
+  
+  padding: 40px;
+  display: flex;
+  height: 150px;
+  width: 150px;
+  color: #;
+}
+.multi-line-text {
+  font-size: 20px;
+}
+
+
+
+

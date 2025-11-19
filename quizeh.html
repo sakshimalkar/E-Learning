@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Quiz App with Timer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      
+      display: flex;
+      justify-content: center;
+	   background-image: url('certificates/quize.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .container {
+      width: 450px;
+      padding: 20px;
+      margin-top: 80px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #428bca;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    .button:hover {
+      background-color: #3071a9;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    #timer {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz App</h1>
+    <div id="timer" class="result">Time Left: <span id="time">05:00</span></div>
+
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button id="submit" class="button">Submit</button>
+    
+    <button id="examform-btn" class="button" disabled>Exam Certification Form</button>
+  </div>
+ 
+ <script>
+ const quizData = [
+  {
+    question: "What does HTML stand for?",
+    options: [
+      "Hyperlinks and Text Markup Language",
+      "Home Tool Markup Language",
+      "Hyper Text Markup Language",
+      "Hyperlinks Transfer Markup Language",
+    ],
+    answer: "Hyper Text Markup Language",
+  },
+  {
+    question: "Which tag is used to create an unordered list?",
+    options: ["<ul>", "<ol>", "<li>", "<list>"],
+    answer: "<ul>",
+  },
+  {
+    question: "Which tag is used to insert an image in HTML?",
+    options: ["<img>", "<image>", "<src>", "<pic>"],
+    answer: "<img>",
+  },
+  {
+    question: "What are nested elements?",
+    options: [
+      "Tags placed side by side",
+      "Tags placed inside another tag",
+      "Tags written without a closing tag",
+      "Tags used for lists",
+    ],
+    answer: "Tags placed inside another tag",
+  },
+  {
+    question: "Which tag is used to create a hyperlink?",
+    options: ["<link>", "<a>", "<href>", "<url>"],
+    answer: "<a>",
+  },
+  {
+    question: "Which of these is the correct structure of an HTML document?",
+    options: [
+      "<html> <head> <body> </html>",
+      "<html> <body> <head> </body>",
+      "<head> <html> <body> </html>",
+      "<html> <head> <body> </body> </html>",
+    ],
+    answer: "<html> <head> <body> </body> </html>",
+  },
+  {
+    question: "What is the default numbering style for an ordered list?",
+    options: ["Roman numerals", "Bullets", "Numbers", "Letters"],
+    answer: "Numbers",
+  },
+  {
+    question: "What is the purpose of the alt attribute in the <img> tag?",
+    options: [
+      "To set the image size",
+      "To define a hyperlink",
+      "To display alternate text if the image is unavailable",
+      "To specify the file type",
+    ],
+    answer: "To display alternate text if the image is unavailable",
+  },
+  {
+    question: "Can a <div> tag be nested inside another <div> tag?",
+    options: ["Yes", "No"],
+    answer: "Yes",
+  },
+  {
+    question: "Which is an example of a relative URL?",
+    options: [
+      "https://www.example.com/page.html",
+      "/about-us.html",
+      "www.example.com/home",
+      "mailto:info@example.com",
+    ],
+    answer: "/about-us.html",
+  },
+];
+
+
+    const quizContainer = document.getElementById('quiz');
+    const resultContainer = document.getElementById('result');
+    const submitButton = document.getElementById('submit');
+    
+    const examformButton = document.getElementById('examform-btn');
+    const timerElement = document.getElementById('time');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let incorrectAnswers = [];
+    let timeLeft = 300; // 5 minutes in seconds
+    let timerInterval;
+
+    function displayQuestion() {
+      const questionData = quizData[currentQuestion];
+      quizContainer.innerHTML = `<div class='question'>${questionData.question}</div>` +
+        questionData.options.map(option => `<label class='option'><input type='radio' name='quiz' value='${option}'> ${option}</label>`).join('');
+    }
+
+    function checkAnswer() {
+      if (timeLeft <= 0) return; // Prevent submitting after time ends
+      const selectedOption = document.querySelector('input[name="quiz"]:checked');
+      if (selectedOption) {
+        if (selectedOption.value === quizData[currentQuestion].answer) {
+          score++;
+        } else {
+          incorrectAnswers.push({ question: quizData[currentQuestion].question, incorrectAnswer: selectedOption.value, correctAnswer: quizData[currentQuestion].answer });
+        }
+        currentQuestion++;
+        currentQuestion < quizData.length ? displayQuestion() : displayResult();
+      }
+    }
+
+    function displayResult() {
+      clearInterval(timerInterval);
+      quizContainer.style.display = 'none';
+      submitButton.disabled = true;
+      
+      examformButton.disabled = false;
+      resultContainer.innerHTML = `Time Over or Quiz Completed! <br> You scored ${score} out of ${quizData.length}.`;
+      localStorage.setItem('quizScore', score);
+	  localStorage.setItem('userName', 'Sakshi'); // Replace with dynamic value if needed
+      localStorage.setItem('courseName', 'HTML'); // Replace with actual course
+    }
+
+
+    
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          displayResult();
+        } else {
+          timeLeft--;
+          const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+          const seconds = (timeLeft % 60).toString().padStart(2, '0');
+          timerElement.textContent = `${minutes}:${seconds}`;
+        }
+      }, 1000);
+    }
+
+    submitButton.addEventListener('click', checkAnswer);
+    
+    examformButton.addEventListener('click', () => window.location.href = 'examform.html');
+
+    displayQuestion();
+    startTimer();
+  </script>
+ 
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FFFACD;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+	   background-image: url('D:/elearning/certificates/Premium.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    .container {
+      height: 580px;
+      width: 35vw;
+      border-radius: 20px;
+      background-color: #9696d6;
+      text-align: center;
+      margin-top: 50px;
+	  margin-left: 270px;
+      padding: 40px;
+    }
+
+    .feedback-container {
+      background: #f5d3d3;
+      padding: 40px;
+      border-radius: 30px;
+	  margin-top: 20px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .feedback-container input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .stars span {
+      font-size: 80px;
+      color: grey;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .stars span.active {
+      color: #00308F;
+    }
+
+    button {
+      padding: 15px 25px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hamburger Icon -->
+<div class="menu-toggle">
+  <i class="fa fa-bars"></i>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <a href="homepage.html">HOME</a>
+  <a href="coursetable.html">COURSES</a>
+  <a href="paymentdirect.html">PAYMENT</a>
+  <a href="greatprofile.html">PROFILE</a>
+  <a href="aboutus.html">ABOUT US</a>
+</div>
+
+<div class="container">
+  <form id="feedbackForm">
+    <div class="feedback-container">
+      <h1>Share Your Experience</h1>
+      <input type="text" id="studentName" name="student_name" placeholder="Enter your name" required>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <div class="stars" id="stars">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+      <h3>Your Rating: <span id="rating">0</span>/5</h3>
+      <input type="hidden" id="ratingValue" name="rating" value="0">
+      <button type="submit" id="submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const closeButton = document.querySelector(".close-btn");
+    const sidebar = document.querySelector(".sidebar");
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("active");
+    }
+
+    menuToggle.addEventListener("click", toggleSidebar);
+    closeButton.addEventListener("click", toggleSidebar);
+  });
+
+  const stars = document.querySelectorAll('.stars span');
+  const ratingDisplay = document.getElementById('rating');
+  const ratingInput = document.getElementById('ratingValue');
+  let rating = 0;
+
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      rating = index + 1;
+      ratingDisplay.textContent = rating;
+      ratingInput.value = rating;
+      stars.forEach((s, i) => {
+        s.classList.toggle('active', i < rating);
+      });
+    });
+  });
+
+  document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('studentName').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!name || !email) {
+      alert('Please fill in your name and email.');
+      return;
+    }
+
+    if (rating === 0) {
+      alert('Please select a rating before submitting!');
+      return;
+    }
+
+    // Show thank you alert
+    alert("Thank you for your rating!");
+
+    // Redirect after 1 second
+    setTimeout(() => {
+      window.location.href = "greatprofile.html";
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

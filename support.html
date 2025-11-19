@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Questions</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+		
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+       /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -250px; /* Hidden by default */
+            width: 230px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+		
+		.sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+
+.close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-color: #f4f4f9;
+        }
+		
+		.form-container {
+    background-color: #FFF0F5;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+	
+	left: -150px;
+    width: 50vw;
+    margin-left: 400px; /* Centers the container */
+    display: block; /* Ensures it behaves as a block-level element */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+       .container {
+    background-color: #FFF0F5;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+	position: relative;
+	left: -500px;
+    
+	width: 35vw;
+    margin-left: 600px;
+
+    display: block; /* Ensures it behaves as a block-level element */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+		
+		
+		
+		
+
+        .question {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            
+            align-items: center;
+            margin-bottom: 10px;
+			
+			
+        }
+        .arrow {
+            margin-right: 50px;
+            font-size: 18px;
+        }
+        .answer {
+            display: none;
+            padding-left: 20px;
+            margin-top: 10px;
+            color: #555;
+			
+            font-size: 16px;
+        }
+        .question:hover {
+            color: #007BFF;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id, arrowId) {
+            const answer = document.getElementById(id);
+            const arrow = document.getElementById(arrowId);
+
+            // Toggle the display of the answer
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+                // Change arrow to pointing down
+                arrow.innerHTML = "&#9660;"; // Down arrow
+            } else {
+                answer.style.display = "none";
+                // Change arrow to pointing right
+                arrow.innerHTML = "&#9654;"; // Right arrow
+            }
+        }
+    </script>
+
+</head>
+<body>
+    
+    
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+	<span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+
+
+
+
+        <div class="tab-content-container">
+<body bgcolor="E6E6FA">
+<div class="form-container">
+    <h1>Support Questions</h1>
+
+    <!-- Question 1 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer1', 'arrow1')">
+            <span class="arrow" id="arrow1">&#9654;</span> <!-- Right arrow initially -->
+            1. How do I register on the website?
+        </div>
+        <div class="answer" id="answer1">To register, click on the "Register" button on the beggining of the website, fill out the Student form, and submit it.</div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer2', 'arrow2')">
+            <span class="arrow" id="arrow2">&#9654;</span> <!-- Right arrow initially -->
+            2. How do I reset my password?
+        </div>
+        <div class="answer" id="answer2">Click on "Login here" on the Registration page  & click on "Forget Password" follow the instructions to reset your password.</div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer3', 'arrow3')">
+            <span class="arrow" id="arrow3">&#9654;</span> <!-- Right arrow initially -->
+            3. How can I contact customer support?
+        </div>
+        <div class="answer" id="answer3">You can contact customer support by clicking on the "Contact Us" on the profile page.</div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer4', 'arrow4')">
+            <span class="arrow" id="arrow4">&#9654;</span> <!-- Right arrow initially -->
+            4. Where can I find the terms and conditions?
+        </div>
+        <div class="answer" id="answer4">The terms and conditions are available in the Homepage, coursetable & Payment page on "Terms & Conditions" section.</div>
+    </div>
+
+
+<!-- Question 5 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer5', 'arrow5')">
+            <span class="arrow" id="arrow5">&#9654;</span> <!-- Right arrow initially -->
+            5. Can I delete my account? & How?
+        </div>
+        <div class="answer" id="answer5">Yes ! Go to profile tab and click on lagout option.</div>
+    </div>
+
+<!-- Question 6 -->
+    <div class="container">
+        <div class="question" onclick="toggleAnswer('answer6', 'arrow6')">
+            <span class="arrow" id="arrow6">&#9654;</span> <!-- Right arrow initially -->
+            6. How do I enroll in a course?
+        </div>
+        <div class="answer" id="answer6">Go to homepage scroll it down and fill the from and submited your info.</div>
+    </div>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const closeButton = document.querySelector(".close-btn");
+        const sidebar = document.querySelector(".sidebar");
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle("active");
+        }
+
+        // Open sidebar when clicking menu icon
+        menuToggle.addEventListener("click", toggleSidebar);
+
+        // Close sidebar when clicking the close button (×)
+        closeButton.addEventListener("click", toggleSidebar);
+    });
+    </script>
+</body>
+</html>
+
+

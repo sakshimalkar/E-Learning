@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About us</title>
+  
+<link rel="stylesheet" 
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+			 background-image: url('certificates/color.jpeg');
+		background-size: cover;
+		
+		background-position: center;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -250px; /* Hidden by default */
+            width: 230px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+		
+		.sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 5px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+       .close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+
+
+
+
+
+    /* General Styling */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5ff;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* Prevent horizontal overflow */
+}
+
+
+    /* Header Styling */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	  
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    header .logo span {
+      color: #aa00ff;
+    }
+
+    header .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 50px 20px;
+	  max-width: 700px;
+	  margin: 0 auto;
+	  
+	  padding: 30px;
+	  text-align: center;
+	  position: relative;
+    left: 500px;
+	  
+	  
+	  
+	  
+	  
+	  
+    }
+
+    .hero h1 {
+      font-size: 2em;
+      color: #333;
+    }
+
+    .hero h1 span {
+      color: #5a00c3;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin: 20px 0;
+      color: #666;
+    }
+
+    /* Illustration */
+    .hero .illustration {
+      margin-top: 30px;
+      position: relative;
+   }
+
+    .hero .illustration img {
+      width: 450px;
+      border-radius: 20px;
+    }
+
+    .cloud {
+      position: absolute;
+      background: skyblue;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	  
+    }
+
+    .cloud.small {
+      position: absolute;
+    background: #5a00c3;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 30px;
+    }
+
+    .cloud.large {
+      position: absolute;
+    background: #5a00c3;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 70px;
+    height: 70px;
+    top: 150px;
+    right: 10px; 
+    }
+ 
+
+
+
+ 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+			
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo .highlight {
+            color: #a046fc;
+        }
+
+        .theme-toggle {
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .about-us, .our-approach, .key-features, .mission {
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			
+			
+    position: relative;
+    left: 500px;
+        }
+
+        h1, h2 {
+            color: #a046fc;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h1 .highlight, h2 .highlight {
+            color: #333;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        li::before {
+            content: "•";
+            color: #a046fc;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .mission p {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+		
+		
+		
+		 /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* Header Styling */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #ece9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #7c3aed;
+    }
+
+    .logo span {
+      color: #3498db;
+    }
+
+    .theme-toggle {
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    /* Mission Section */
+    .mission-section {
+      text-align: center;
+      margin: 50px 20px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .mission-image {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .mission-title {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .mission-text {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #555;
+    }
+		
+		
+		
+		
+		
+		
+		 body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+	  
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #5e17eb;
+    }
+
+    header h1 span {
+      color: #007bff;
+    }
+
+    header .icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .footer {
+    background-color: #f0eaff;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Allows positional adjustments */
+    left: 500px; /* Moves the footer to the right */
+    width: calc(100% - 40px); /* Keeps the width within the viewport */
+    box-sizing: border-box;
+	
+}
+
+
+    .footer h2 {
+      color: #5e17eb;
+      margin-bottom: 10px;
+    }
+
+    .footer .social-icons a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #5e17eb;
+      font-size: 20px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .footer .links {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer .links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer .links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer .links ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .footer .links ul li a:hover {
+      text-decoration: underline;
+    }
+			
+		
+    </style>
+</head>
+
+<body>
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+	<span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+        <div class="tab-content-container">
+
+  
+  
+
+  <section class="hero">
+    <h1>Transforming Lives <span>Through Learning</span></h1>
+    <p>We envision a world where anyone, anywhere has the power to transform their lives through learning.</p>
+    <div class="illustration">
+      <img src="D:\elearning\certificates\e learning.jpg" alt="elearning image">
+      <div class="cloud small"></div>
+      <div class="cloud large"></div>
+    </div>
+  </section>
+
+
+    
+
+    <section class="about-us">
+        <h1>About Us<span class="highlight"></span></h1>
+        <p>Welcome to our innovative E-Learning platform, designed to revolutionize the way you learn programming and technology-related content.</p>
+    </section>
+
+    <section class="our-approach">
+        <h2>Our Approach</h2>
+        <ul>
+		
+
+
+            <li>🎯 Personalized learning experiences</li>
+            <li>✨ Engaging Learning: We create interactive, fun, and impactful eLearning experiences.</li>
+            <li>🔨 Hands-on, project-based curriculum</li>
+            <li>✨ Engaging Learning: We create interactive, fun, and impactful eLearning experiences.</li>
+            <li>📈 Continuous improvement and adaptation</li>
+        </ul>
+    </section>
+
+    <section class="key-features">
+        <h2>Key Features</h2>
+        <ul>
+			<li>📖 Expert Content: Lessons from industry professionals.</li>
+			<li>🎮 Interactive Tools: Videos, quizzes, and gamified elements to boost engagement.</li>
+			<li>🔒 Track Progress: Stay on top of your goals with personalized insights.</li>
+            
+        </ul>
+    </section>
+
+
+    <section class="mission">
+        <h2>Our Mission</h2>
+		<img src="D:\elearning\certificates\mission.jpg" alt="Mission Illustration" class="mission-image" style="width:500px; height:300px;">
+        <p>💡 Our mission: Empower learners to succeed through innovative eLearning solutions.
+😊 Join us and make learning a joyful journey!</p>
+    </section>
+
+  
+  
+   
+  
+  
+   
+ 
+  
+  <div class="content">
+    <!-- Content goes here -->
+  </div>
+  <footer class="footer">
+    <h2>E-Learning</h2>
+    <div class="social-icons">
+	
+	
+	<a href="https://www.instagram.com/" target="_blank" rel="noopener">
+  <center>  <img src="D:\elearning\certificates\instagram.jpg" height="50" width="50"></center>
+</a>
+	
+	
+	<a href="https://www.facebook.com/profile.php?id=61571218281371&sk=about" target="_blank" rel="noopener">
+  <center>  <img src="D:\elearning\certificates\facebook (3).jpg"height="50" width="50"></center>
+</a>
+	
+	
+	
+
+    </div>
+    <p>© 2024 elearning.in <br> elearning is a registered trademark of elearning.co</p>
+    <div class="links">
+      <ul>
+        <li><strong>Courses</strong></li>
+        
+        <li><a href="#">Virtual classroom courses</a></li>
+        <li><a href="#">E-learning courses</a></li>
+        <li><a href="#">Video courses</a></li>
+      </ul>
+      <ul>
+        <li><strong>Community</strong></li>
+        <li><a href="#">Learners</a></li>
+        
+        <li><a href="#">Developers</a></li>
+        
+      </ul>
+    </div>
+  </footer>
+  <script>
+         document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const closeButton = document.querySelector(".close-btn");
+        const sidebar = document.querySelector(".sidebar");
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle("active");
+        }
+
+        // Open sidebar when clicking menu icon
+        menuToggle.addEventListener("click", toggleSidebar);
+
+        // Close sidebar when clicking the close button (×)
+        closeButton.addEventListener("click", toggleSidebar);
+    });
+    </script>
+
+</body>
+</html>

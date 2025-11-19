@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Boxes</title>
+    
+    <!-- Font Awesome for the menu icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding-top: 50px; /* Ensure menu toggle is visible */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Initially hidden */
+            width: 250px;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1200; /* Make sure it's above other elements */
+			overflow-y: auto;
+        }
+
+        /* Sidebar visible */
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Close button */
+        .close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+     
+            padding: -5px -5px;
+            border-radius: 5px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1101; /* Ensure it's above everything */
+        }
+
+        /* Video container */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-box {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-box video {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .video-box p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+		
+		
+		.pdf-btn {
+      background-color: #007BFF;
+      color: white;
+       padding: 13px 35px;
+       font-size: 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+	        .pdf-btn:hover {
+            background-color: #0056b3;
+        }
+		
+		    #pdfList {
+      margin-top: 20px;
+      display: none;
+    }
+
+    #pdfList ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #pdfList li {
+      margin: 8px 0;
+    }
+
+    #pdfList a {
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #pdfList a:hover {
+      text-decoration: underline;
+    }
+
+    #pdfViewer {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #ccc;
+      display: none;
+    }
+		
+
+        /* Button */
+        .button {
+            display: inline-block;
+            padding: 13px 35px;
+            font-size: 24px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 30px 0;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <div class="video-box">
+            <video controls>
+                
+				 <source src="E-Learning video/Java/1_Java_Introduction(360p).mp4" type="video/mp4">
+
+                Your browser does not support the video tag.
+            </video>
+            <p>1. Java Introduction</p>
+        </div>
+        <div class="video-box">
+            <video controls>
+                <source src="E-Learning video/Java/3_First_Code_in_Java(360p).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>2. First Code in Java</p>
+        </div>
+        <div class="video-box">
+            <video controls>
+                <source src="E-Learning video/Java/4_How_Java_Works(360p).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>3. How Java Works</p>
+        </div>
+        <div class="video-box">
+            <video controls>
+                <source src="E-Learning video/Java/5_Variables_in_Java(360p).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>4. Variables in Java</p>
+        </div>
+		
+		<div class="video-box">
+      <video controls>
+        <source src="E-Learning video/Java/6_Data_types_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>5. Data types in Java</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/Java/9_Arithmetic_Operators_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>6. Arithmetic Operators in Java</p>
+    </div>
+	<div class="video-box">
+	<video controls>
+        <source src="E-Learning video/Java/10_Relational_Operators_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>7. Relational Operators in Java(</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/Java/11_Logical_Operators_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>8. Logical Operators in Java</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/Java/15_Switch_Statement_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>9. Switch Statement in Java</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video/Java/13_If_Else_If_in_Java(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>10. If Else If in Java</p>
+    </div>
+    
+	
+  </div>
+  
+    <button class="pdf-btn" onclick="goToPDFPage()">PDF</button>
+
+    <center>
+        <a href="quizej.html" class="button">Quiz</a>
+    </center>
+	
+
+  <script>
+    function goToPDFPage() {
+      window.location.href = "pdfj.html"; // Go to the PDF list page
+    }
+  
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const sidebar = document.querySelector(".sidebar");
+            const closeButton = document.querySelector(".close-btn");
+
+            function toggleSidebar() {
+                console.log("Sidebar toggled"); // Debugging
+                sidebar.classList.toggle("active");
+            }
+
+            menuToggle.addEventListener("click", toggleSidebar);
+            closeButton.addEventListener("click", toggleSidebar);
+        });
+   
+   
+
+    function selectVideo() {
+      alert("Video button clicked");
+      // Example: window.location.href = "video.html";
+    }
+
+    function showPdfList() {
+      const listContainer = document.getElementById("pdfList");
+      const list = document.getElementById("pdfLinks");
+      list.innerHTML = ""; // Clear existing
+
+      pdfFiles.forEach(file => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = file;
+        link.onclick = function () {
+          viewPDF(file);
+        };
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+
+      listContainer.style.display = "block";
+    }
+
+    function viewPDF(fileName) {
+      const viewer = document.getElementById("pdfViewer");
+      viewer.src = fileName;
+      viewer.style.display = "block";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+
+
+.image{
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+.image .profile-pic{
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.data h2{
+  font-size: 38px;
+  font-weight: 900;
+}

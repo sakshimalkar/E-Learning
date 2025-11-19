@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit profile</title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+
+
+	
+    <style>
+	
+	body {
+	
+    font-family: Arial, sans-serif;
+	 
+}
+/* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 500vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -250px; /* Hidden by default */
+            width: 250px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+		
+		.sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+  
+    
+
+
+
+        /* Basic reset and background styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+            background-color: #E6E6FA;
+        }
+
+        /* Profile and logout modal container */
+       
+
+        /* Logout confirmation modal */
+        .modal {
+            position: fixed;
+            top: 100;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+			height: 90vh;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+
+        .modal-content {
+            width: 800px;
+			margin-top: 10px;
+            background-color: #F0F8FF;
+            border-radius: 80px;
+            padding: 50px;
+			height: 50vh;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            margin-top: 50px;
+			height: 50vh;
+            font-size: 20px;
+        }
+
+        .modal-content p {
+            color: #006400;
+			margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .modal-content button {
+            padding: 20px 230px;
+            border: none;
+			margin-top: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 15px 10px;
+        }
+
+        .cancel-btn {
+            background-color: #E6E6FA;
+        }
+
+        .logout-btn {
+            background-color: #FFC0CB;
+            color: White;
+        }
+
+        /* Show modal when activated */
+        .modal.show {
+            visibility: visible;
+            opacity: 5;
+			height: 50vh;
+        }
+   
+        h1{
+		color:purple;
+        }
+h2{
+		color:black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+
+        <div class="tab-content-container">
+
+</div>
+
+ <body bgcolor="#E6E6FA">
+    <!-- Profile Section -->
+    
+        
+    </div>
+
+    <!-- Modal Section -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h1>Logout</h1>
+            <p>Are you sure you want to logout?</p>
+            <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+            <button class="logout-btn"><a href="1interface.html" style="text-decoration:none;">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show modal
+        function showModal() {
+            document.getElementById("logoutModal").classList.add("show");
+        }
+
+        // Function to hide modal
+        function hideModal() {
+            document.getElementById("logoutModal").classList.remove("show");
+        }
+
+        // Function to perform logout action
+        function logout() {
+            alert("Logging out...");
+            hideModal();
+        }
+    </script>
+	<script>
+        // Get elements
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContainer = document.querySelector('.main-container');
+
+        // Add click event listener to toggle menu
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active'); // Show/hide sidebar
+            mainContainer.classList.toggle('shifted'); // Adjust content margin
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

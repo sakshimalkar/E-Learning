@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Certificate</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #FCE3EF, #B6D6FC); /* 🔵 Updated background color */
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e3f;
+      color: #fff;
+      height: 100vh;
+      padding-top: 40px;
+      margin-top: -30px;
+      position: fixed;
+    }
+
+    .sidebar a {
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #34346c;
+      padding-left: 30px;
+    }
+
+    .certificate {
+      width: 50%;
+      margin: 30px auto;
+      padding: 50px;
+      border: 10px solid #153d77;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      position: relative;
+      height: auto;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #f5b900, #ffd700);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: -15px;
+      color: #153d77;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: -30px;
+      color: #f5b900;
+    }
+
+    p, .course-name {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    .name {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #0077ff;
+      margin: 20px 0;
+    }
+
+    .course-name span {
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      padding: 0 40px;
+    }
+
+    .signature-block {
+      text-align: center;
+    }
+
+    .signature-block img {
+      width: 150px;
+      height: auto;
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .buttons button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .edit-btn { background-color: #007bff; }
+    .course-btn { background-color: #6f42c1; }
+    .email-btn { background-color: #28a745; }
+    .save-btn { background-color: #dc3545; }
+  </style>
+
+  <script>
+    function confirmLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        window.location.href = '1interface.html';
+      }
+    }
+
+    function editName() {
+      const newName = prompt("Enter the student name:");
+      if (newName) {
+        document.getElementById('studentName').innerText = newName;
+      }
+    }
+
+    function editCourse() {
+      const newCourse = prompt("Enter the course name:");
+      if (newCourse) {
+        document.querySelector('#courseName span').innerText = newCourse;
+      }
+    }
+
+    function sendEmail() {
+      const studentName = document.getElementById('studentName').innerText;
+      const courseName = document.querySelector('#courseName span').innerText;
+      const subject = encodeURIComponent("Certificate of Achievement");
+      const body = encodeURIComponent(`Hello,\n\nCongratulations on successfully completing the course: ${courseName}! Your dedication and hard work have truly paid off. Wishing you the very best in your future learning and career. Please find the certificate awarded to ${studentName}.\n\nCongratulations!`);
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${subject}&body=${body}`;
+      window.open(gmailUrl, '_blank');
+    }
+
+    function saveAsImage() {
+      html2canvas(document.getElementById("certificate")).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "certificate.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="adminstu.html">👩🏻‍🎓 Manage Students</a>
+    <a href="admincou.html">📚 Manage Courses</a>
+    <a href="adminpay.html">💳 Payments</a>
+    <a href="admincertificate.html">📜 Certificates</a>
+    <a onclick="confirmLogout()">🚪 Logout</a>
+  </div>
+
+  <div class="certificate" id="certificate">
+    <div class="ribbon"></div>
+    <h1>CERTIFICATE</h1>
+    <h2>OF ACHIEVEMENT E-LEARNING</h2>
+    <div class="course-name" id="courseName">successfully Completing <span>[Course Name]</span> Course</div>
+    <p><b>THIS CERTIFICATE IS PRESENTED TO:</b></p>
+    <div class="name" id="studentName">[Student Name]</div>
+    <p>Hopefully this achievement will be the first step towards bigger success.<br>Keep trying and give your best!</p>
+
+    <div class="signatures">
+      <div class="signature-block">
+        <p style="font-family: 'Lucida Handwriting', cursive; font-size: 1.1rem;">vivkybhaat</p>
+        <p><strong>Company Director / CEO</strong></p>
+      </div>
+      <div class="signature-block">
+        <p style="font-family: 'Lucida Handwriting', cursive; font-size: 1.1rem;">jaichopra</p>
+        <p><strong>Authorized Faculty Member</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="edit-btn" onclick="editName()">Edit Name</button>
+    <button class="course-btn" onclick="editCourse()">Edit Course Name</button>
+    <button class="email-btn" onclick="sendEmail()">Send via Email</button>
+    <button class="save-btn" onclick="saveAsImage()">Save as Image</button>
+  </div>
+
+</body>
+</html>
