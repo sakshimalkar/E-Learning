@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 500vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -250px; /* Hidden by default */
+            width: 250px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+		
+		.sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+		
+		.close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+  
+
+
+		
+	.container{
+height:80vh;
+width:50vw;
+position: center;
+border-radius: 20px;
+background-color:#e3c4ff;
+text-align:center;
+ margin-left:50px;
+margin-top: 50px;
+ margin-right:100px;
+ padding: 40px;
+ position: relative;
+	right: -350px;
+ 
+}	
+
+
+
+
+
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #fff6ab;
+        }
+        .feedback-container {
+            background: #ffdbdb;
+            padding: 50px;
+            height: 50vh;
+            width: 35vw;
+            margin-top: 50px;
+            margin-left: 70px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .stars span {
+            font-size: 80px;
+            color: #737373;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .stars span.active {
+            color: #00308F;
+        }
+        button {
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+			margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+		
+				
+		
+    </style>
+</head>
+<body>
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+	<span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+
+        <div class="tab-content-container">
+
+
+
+<div class="container">
+
+
+
+
+    <div class="feedback-container">
+                <h1>Sharing Your Experience</h1>
+                <div class="stars" id="stars">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <h3>Rating is: <span id="rating">0</span>/5</h3>
+                <button id="submit-btn">Submit</button>
+            </div>
+			 </div>
+			  </div>
+			  <script>
+         document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const closeButton = document.querySelector(".close-btn");
+        const sidebar = document.querySelector(".sidebar");
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle("active");
+        }
+
+        // Open sidebar when clicking menu icon
+        menuToggle.addEventListener("click", toggleSidebar);
+
+        // Close sidebar when clicking the close button (×)
+        closeButton.addEventListener("click", toggleSidebar);
+    });
+    </script>
+			<script>
+    // JavaScript Code
+    const stars = document.querySelectorAll('.stars span');
+    const ratingDisplay = document.getElementById('rating');
+    const submitBtn = document.getElementById('submit-btn');
+    let rating = 0;
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            rating = index + 1;
+            ratingDisplay.textContent = rating;
+
+            // Highlight stars based on the rating
+            stars.forEach((s, i) => {
+                if (i < rating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+    });
+
+    submitBtn.addEventListener('click', () => {
+        if (rating === 0) {
+            alert('Please select a rating before submitting your feedback!');
+        } else {
+            alert(`Thank you for your feedback! You rated: ${rating}/5.`);
+        }
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Set Your Password</h2>
+        <form id="password-form">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+
+            <p id="error-message" class="error-message"></p>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
+        const errorMessage = document.getElementById("error-message");
+
+        // Function to check if passwords match in real-time
+        confirmPasswordInput.addEventListener("input", function () {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                errorMessage.textContent = "Passwords don't match.";
+            } else {
+                errorMessage.textContent = ""; // Clear the error message if passwords match
+            }
+        });
+
+        // Prevent form submission if passwords don't match
+        document.getElementById("password-form").addEventListener("submit", function (e) {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                e.preventDefault(); // Stop form submission
+                alert("Passwords do not match. Please correct them.");
+            }
+        });
+    </script>
+</body>
+</html>

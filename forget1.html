@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forgot Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("MLe0SLgS-pi9hjnzJ"); // Your public key
+    })();
+  </script>
+  <style>
+   body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* 🔒 Prevent left-right scroll */
+     font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('D:/elearning/certificates/color.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+    body {
+      font-family: Arial;
+      background-color: #111;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      max-width: 450px;
+	  height: 400px;
+      margin: 100px auto;
+      padding: 30px;
+       background-image: url('D:/elearning/certificates/color.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #f578f5;
+    }
+	h1 {
+	margin-top: 20px;
+	font-family: papyrus;
+	color: black;
+	}
+	
+	p {
+	margin-top: 40px;
+	margin-bottom: -10px;
+	color: black;
+	}
+    input, button {
+      width: 90%;
+      padding: 13px;
+      margin: 20px 0;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background-color: #0096FF;
+      color: white;
+      cursor: pointer;
+	  font-size: 16px;
+    }
+    .step { display: none; }
+    .step.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Forgot Password</h1>
+
+    <!-- Step 1 -->
+    <div class="step active" id="step1">
+      <p>Enter your email:</p>
+      <input type="email" id="email" placeholder="Enter your email" />
+      <button onclick="sendOTP()">Send OTP</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
+      <p>Enter OTP:</p>
+      <input type="text" id="otpInput" placeholder="Enter OTP" />
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" id="step3">
+      <p>Enter New Password:</p>
+      <input type="password" id="newPassword" placeholder="New Password" />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+      <button onclick="resetPassword()">Reset Password</button>
+    </div>
+  </div>
+
+  <script>
+    let generatedOTP = "";
+
+    function sendOTP() {
+      const email = document.getElementById("email").value;
+      if (!email) return alert("Please enter your email.");
+
+      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+      const templateParams = {
+        to_email: email,
+        otp: generatedOTP,
+      };
+
+      emailjs.send("service_n0qu7jo", "template_gixr1f8", templateParams, "MLe0SLgS-pi9hjnzJ") // <-- Added Public Key
+        .then(() => {
+          alert("OTP sent to your email.");
+          showStep(2);
+        }, (error) => {
+          console.error("Error sending OTP:", error);
+          alert("Failed to send OTP. Check Console.");
+        });
+    }
+
+    function verifyOTP() {
+      const enteredOTP = document.getElementById("otpInput").value;
+      if (enteredOTP === generatedOTP) {
+        alert("OTP verified!");
+        showStep(3);
+      } else {
+        alert("Incorrect OTP.");
+      }
+    }
+
+    function resetPassword() {
+      const newPass = document.getElementById("newPassword").value;
+      const confirmPass = document.getElementById("confirmPassword").value;
+
+      if (!newPass || !confirmPass) return alert("Please fill all fields.");
+      if (newPass !== confirmPass) return alert("Passwords do not match.");
+
+      alert("Password reset successfully!");
+      window.location.href = "loghtml.html";
+    }
+
+    function showStep(step) {
+      document.querySelectorAll(".step").forEach(div => div.classList.remove("active"));
+      document.getElementById("step" + step).classList.add("active");
+    }
+  </script>
+</body>
+</html>

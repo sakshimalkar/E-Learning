@@ -1,0 +1,14 @@
+
+
+
+
+       
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar.style.left === "250px") {
+                sidebar.style.left = "0"; // Show the sidebar
+            } else {
+                sidebar.style.left = "250px"; // Hide the sidebar
+            }
+        }
+  

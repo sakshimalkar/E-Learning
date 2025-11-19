@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #6a11cb;
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        
+
+        .hero {
+             background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+			margin-top: -72px;
+			position: absolute;
+            top: 50%;
+			height:250px;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%,-50%);
+        }
+		span{
+			text-transform: uppercase;
+            display: block;
+		}
+
+        .h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+			 font-weight: bold;
+            letter-spacing: 8px;
+            color: white;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            position: relative;
+            animation: text 4s infinite;
+        }
+
+        .p {
+            font-size: 25px;
+            margin-bottom: 50px;
+			color: white;
+        }
+		 @keyframes text{
+            0%{
+                color: white;
+                margin-bottom: -40px;
+            }30%{
+                letter-spacing: 30px;
+                margin-bottom: -40px;
+            }80%{
+                letter-spacing: 8px;
+                margin-bottom: -40px;
+            }100%{
+                margin-bottom: 20px;
+            }
+        }
+        .hero button {
+            padding: 20px 40px;
+            font-size: 20px;
+            color: #6a11cb;
+            background-color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+			
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+			margin-top: 400px;
+            padding: 50px 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .feature-card img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">E-Learning Platfrom</div>
+        
+    </header>
+
+    <section class="hero">
+        <span class="h1" >It's time to amplify your Online Career</span>
+        <span class="p">Join us to unlock your potential and reach your career goals.</span>
+        <button><a href="registration.html" style="text-decoration:none;">Register Now</a></button>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <img src="C:\e-learning\card1.jpg">
+            <h3>Expert Instructors</h3>
+            <p>Learn from industry-leading professionals.</p>
+        </div>
+        <div class="feature-card">
+             <img src="C:\e-learning\card2.jpeg">
+            <h3>Quality Content</h3>
+            <p>Access high-quality resources for all levels.</p>
+        </div>
+        <div class="feature-card">
+             <img src="C:\e-learning\card3.avif">
+            <h3>Lifetime Access</h3>
+            <p>Study at your own pace anytime, anywhere.</p>
+        </div>
+    </section>
+
+    
+</body>
+</html>

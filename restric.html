@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Restriction</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Correct Font Awesome 6 (for 'fa-bars') -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+	  background-image: url('D:/elearning/certificates/payment.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 5px;
+      left: 8px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <span class="close-btn">&times;</span>
+    <a href="homepage.html">HOME</a>
+    <a href="coursetable.html">COURSES</a>
+    <a href="paymentdirect.html">PAYMENT</a>
+    <a href="greatprofile.html">PROFILE</a>
+    <a href="aboutus.html">ABOUT US</a>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col items-center justify-center min-h-screen px-4">
+    <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md text-center">
+      <h1 class="text-2xl font-bold mb-4 text-blue-700">Access Restricted</h1>
+      <p class="text-md text-gray-600 mb-6">To view video content, please complete the payment process.</p>
+
+      <button id="pay-button"
+              class="bg-green-600 hover:bg-green-700 text-white text-lg font-medium py-2 rounded-lg w-full mb-4">
+        Pay Now
+      </button>
+
+      <button id="view-videos"
+              class="bg-gray-400 text-white text-lg font-medium py-2 rounded-lg w-full cursor-not-allowed" disabled>
+        View Videos
+      </button>
+    </div>
+
+    <div id="payment-form"
+         class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md mt-6 hidden text-center">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600">Payment Details</h2>
+
+      <input id="studentName" type="text" placeholder="Enter your name"
+             class="w-full p-3 text-base border border-gray-300 rounded-lg mb-4" />
+
+      <div class="w-40 h-40 mx-auto mb-4 border border-gray-300 flex items-center justify-center rounded-lg overflow-hidden">
+        <img src="certificates/my final.png" alt="QR Code" class="w-full h-full object-cover" />
+      </div>
+
+      <button onclick="activateVideos()"
+              class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-2 rounded-lg w-full">
+        Confirm Payment
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const closeButton = document.querySelector(".close-btn");
+      const sidebar = document.querySelector(".sidebar");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("active");
+      }
+
+      menuToggle.addEventListener("click", toggleSidebar);
+      closeButton.addEventListener("click", toggleSidebar);
+    });
+
+    let isPaymentCompleted = false;
+    const selectedCourse = localStorage.getItem("selectedCourse");
+
+    document.getElementById("pay-button").onclick = () => {
+      document.getElementById("payment-form").classList.remove("hidden");
+    };
+
+    document.getElementById("view-videos").onclick = () => {
+      if (!selectedCourse) {
+        alert("No course selected. Please go back and select a course.");
+        return;
+      }
+
+      if (isPaymentCompleted) {
+        switch (selectedCourse.toLowerCase()) {
+          case "java":
+            window.location.href = "videoj.html";
+            break;
+          case "php":
+            window.location.href = "videop.html";
+            break;
+          case "html":
+            window.location.href = "videoh.html";
+            break;
+          case "dotnet":
+            window.location.href = "videonet.html";
+            break;
+          default:
+            alert("Video page not found for selected course.");
+        }
+      } else {
+        alert("Please complete payment first.");
+      }
+    };
+
+    function activateVideos() {
+      const name = document.getElementById("studentName").value.trim();
+      if (name === "") {
+        alert("Enter your name.");
+        return;
+      }
+
+      isPaymentCompleted = true;
+      const viewBtn = document.getElementById("view-videos");
+      viewBtn.disabled = false;
+      viewBtn.classList.remove("cursor-not-allowed", "bg-gray-400");
+      viewBtn.classList.add("bg-green-600", "hover:bg-green-700");
+
+      alert("Payment confirmed. You can now access the videos.");
+    }
+  </script>
+
+</body>
+</html>

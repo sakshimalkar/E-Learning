@@ -1,0 +1,356 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Payment Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('certificates/Pretty smiling asian woman pointing hand _ Premium Photo.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+        }
+
+        
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            width: 250px;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide in the sidebar */
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        /* Hamburger icon */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+       
+		
+.container {
+            width: 600px;
+			background-color:#B0C4DE;
+			margin-top: 90px;
+            padding: 20px;
+            border: 1px solid #000;
+            position: relative;
+			left: -190px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+		
+		
+		.container label {
+            font-size: 18px;
+            color: black;
+            margin-bottom: 5px;
+            display: block;
+			font-weight: bold;
+        }
+        .container input {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+		
+		
+		
+
+        p {
+            text-align: center;
+			font-size: 20px;
+			font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 10px;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+			background-color: #B0C4DE;
+			padding: 13px 24px;
+			 color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+			
+			
+        }
+
+        button {
+    padding: 13px 24px;
+    background-color:  #107a29; /* Green Color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #107a29; /* Dark Green */
+}
+		 #overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    #overlay .modal {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+		 }
+		html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 50;
+	  
+    }
+  </style>
+ </head>
+ <body>
+  <!-- Hamburger Icon -->
+    <div class="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+
+
+
+<div class="form-container">
+    <div class="container">
+ <form id="courseForm" action="restric.html" method="POST">
+    <p>Enter Course Details</p>
+
+    <label for="courses">Course Name:</label>
+    <select name="courses" id="courses" style="height: 40px; width: 500px;">
+        <option value=""></option>
+        <option value="java">Java</option>
+        <option value="html">HTML</option>
+        <option value="php">PHP</option>
+        <option value="dotnet">DOTNET</option>
+    </select>
+
+    <input type="hidden" id="selectedCourse" name="selectedCourse" value=""> <!-- Hidden Input -->
+
+   <label for="duration">Duration:</label>
+<input type="text" name="duration" value="1 Month" readonly><br>
+
+<label for="amount">Amount:</label>
+<input type="number" name="amount" value="1500" readonly><br>
+
+
+    <button type="submit" style="background-color: #28a745; color: white; padding: 13px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">
+    Submit
+</button>
+
+</form>
+
+
+
+        </div>
+    </div>
+
+   
+
+<div id="overlay">
+  <div class="modal relative">
+    <span class="close-overlay" onclick="closeOverlay()">×</span>
+    <h2 class="text-lg font-semibold mb-4 text-black">Please choose a course before proceeding.</h2>
+  </div>
+</div>
+<!-- FIXED FOOTER -->
+  <footer class="bg-gray-800 text-white py-4"><body bgcolor="">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 YourElearnSite. All rights reserved.</p>
+      <div class="space-x-4 mt-2 md:mt-0 text-sm">
+        <a href="term.html" class="hover:underline">Terms & Conditions</a>
+        <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+        <a href="contactus.html" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+  
+<script>
+
+ document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const closeButton = document.querySelector(".close-btn");
+            const sidebar = document.querySelector(".sidebar");
+
+            // Function to toggle sidebar visibility
+            function toggleSidebar() {
+                sidebar.classList.toggle("active");
+            }
+
+            // Open sidebar when clicking menu icon
+            menuToggle.addEventListener("click", toggleSidebar);
+
+            // Close sidebar when clicking the close button (×)
+            closeButton.addEventListener("click", toggleSidebar);
+        });
+
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('courseForm');
+
+    form.addEventListener('submit', function (event) {
+        const course = document.getElementById('courses').value;
+        if (!course) {
+            event.preventDefault();
+            document.getElementById('overlay').classList.remove('hidden');
+        } else {
+            // Store selected course in localStorage
+            localStorage.setItem('selectedCourse', course);
+            document.getElementById('selectedCourse').value = course;
+        }
+    });
+});
+// Close Overlay
+  function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  // Form Validation
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('courseForm');
+
+    form.addEventListener('submit', function (event) {
+      const course = document.getElementById('courses').value;
+      if (!course) {
+        event.preventDefault();
+        alert("Please select a course before submitting.");
+        return;
+      } else {
+        localStorage.setItem('selectedCourse', course);
+        document.getElementById('selectedCourse').value = course;
+      }
+    });
+  });
+
+  // Show overlay when page loads
+  window.onload = function () {
+    document.getElementById('overlay').style.display = 'flex';
+  };
+
+</script>
+
+ </body>
+</html> 

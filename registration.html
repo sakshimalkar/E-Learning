@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('D:/elearning/certificates/register.jpg'); /* Adjust if needed */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      width: 600px;
+      padding: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      cursor: pointer;
+	  font-size:20px;
+      font-weight: bold;
+      color: #333;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab:hover, .active-tab {
+      color: #007BFF;
+      border-bottom: 2px solid #007BFF;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+	  font-size:16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .login-link {
+      margin-top: 15px;
+      text-align: center;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab" onclick="window.location.href='1interface.html'">Admin</div>
+      <div class="tab active-tab">Student</div>
+    </div>
+
+    <form onsubmit="return validateForm();">
+      
+      <label for="username"><b>Username</b></label>
+      <input type="text" id="username" class="input-field" placeholder="Enter username" />
+
+      <label for="email"><b>Email ID</b></label>
+      <input type="email" id="email" class="input-field" placeholder="Enter email" />
+
+      <label for="contact"><b>Contact Number</b></label>
+      <input type="text" id="contact" class="input-field" placeholder="Enter 10-digit number" />
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" id="password" class="input-field" placeholder="Enter password" />
+
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+
+    <a href="login.html" class="login-link">Already have an account? Login here</a>
+  </div>
+
+  <script>
+    function validateForm() {
+      
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const contact = document.getElementById("contact").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!username || !email || !contact || !password) {
+        alert("All fields are required.");
+        return false;
+      }
+
+      if (!/^\d{10}$/.test(contact)) {
+        alert("Contact number must be exactly 10 digits.");
+        return false;
+      }
+
+      if (password.length < 6) {
+        alert("Password should be at least 6 characters long.");
+        return false;
+      }
+
+      // You can replace this redirect with form submission logic
+      alert("Great ! Your Registration is successfully !");
+      window.location.href = "homepage.html";
+      return false; // prevent form reload
+    }
+  </script>
+</body>
+</html>

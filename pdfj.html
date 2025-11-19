@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF Table View</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✅ Font Awesome for menu icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('D:/elearning/certificates/notes.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 200px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      transition: left 0.3s;
+      z-index: 999;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      color: black;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 10px;
+	  margin-left: 160px;
+    }
+
+    .back-btn {
+      background-color: #1e90ff;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      font-size: 20px;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 20px;
+	  margin-bottom: 20px;
+	  margin-left: 160px;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 70%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	  margin-left: 300px;
+    }
+
+    th, td {
+      padding: 15px 25px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #1e90ff;
+      color: white;
+    }
+
+    td a {
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-toggle">
+    <i class="fa fa-bars"></i>
+  </div>
+
+  <div class="sidebar">
+    <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+    <a href="homepage.html">HOME</a>
+    <a href="coursetable.html">COURSES</a>
+    <a href="paymentdirect.html">PAYMENT</a>
+    <a href="greatprofile.html">PROFILE</a>
+    <a href="aboutus.html">ABOUT US</a>
+  </div>
+
+  <button class="back-btn" onclick="goBack()">⬅️ Back to Main Page</button>
+
+  <h2>Java PDF Notes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>PDF File</th>
+        <th>Open</th>
+      </tr>
+    </thead>
+    <tbody id="pdfTableBody"></tbody>
+  </table>
+
+  <script>
+    // Sidebar toggle logic
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const closeButton = document.querySelector(".close-btn");
+      const sidebar = document.querySelector(".sidebar");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("active");
+      }
+
+      menuToggle.addEventListener("click", toggleSidebar);
+      closeButton.addEventListener("click", toggleSidebar);
+    });
+
+    // PDF file array
+    const pdfFiles = [
+      "java unit 1.pdf",
+      "java unit 2.pdf",
+      "java unit 3.pdf",
+      "java unit 4.pdf",
+      "java unit 5.pdf",
+      "java unit 6, 7 & 8.pdf",
+      "java unit 9.pdf",
+      "java unit 10.pdf"
+    ];
+
+    const tableBody = document.getElementById("pdfTableBody");
+
+    pdfFiles.forEach((file, index) => {
+      const tr = document.createElement("tr");
+
+      const tdIndex = document.createElement("td");
+      tdIndex.textContent = index + 1;
+
+      const tdName = document.createElement("td");
+      tdName.textContent = file;
+
+      const tdLink = document.createElement("td");
+      const link = document.createElement("a");
+      link.href = file;
+      link.target = "_blank";
+      link.textContent = "Open PDF";
+      tdLink.appendChild(link);
+
+      tr.appendChild(tdIndex);
+      tr.appendChild(tdName);
+      tr.appendChild(tdLink);
+
+      tableBody.appendChild(tr);
+    });
+
+    // Go back function
+    function goBack() {
+      window.location.href = "videoj.html";
+    }
+  </script>
+</body>
+</html>

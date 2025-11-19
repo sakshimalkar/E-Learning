@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Boxes</title>
+    
+    <!-- Font Awesome for the menu icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding-top: 50px; /* Ensure menu toggle is visible */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Initially hidden */
+            width: 250px;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1200; /* Make sure it's above other elements */
+			overflow-y: auto;
+        }
+
+        /* Sidebar visible */
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Close button */
+        .close-btn {
+            font-size: 24px;
+            color: black;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+     
+            padding: -5px -5px;
+            border-radius: 5px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1101; /* Ensure it's above everything */
+        }
+
+        /* Video container */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-box {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-box video {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .video-box p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+		.pdf-btn {
+      background-color: #007BFF;
+      color: white;
+       padding: 13px 40px;
+       font-size: 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+	        .pdf-btn:hover {
+            background-color: #0056b3;
+        }
+		
+		    #pdfList {
+      margin-top: 20px;
+      display: none;
+    }
+
+    #pdfList ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #pdfList li {
+      margin: 8px 0;
+    }
+
+    #pdfList a {
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #pdfList a:hover {
+      text-decoration: underline;
+    }
+
+    #pdfViewer {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #ccc;
+      display: none;
+    }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            padding: 13px 35px;
+            font-size: 24px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 30px 30px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+  </style>
+</head>
+<body>
+
+ <!-- Hamburger Icon -->
+    <div class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a href="homepage.html">HOME</a>
+        <a href="coursetable.html">COURSES</a>
+        <a href="paymentdirect.html">PAYMENT</a>
+        <a href="greatprofile.html">PROFILE</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </div>
+
+  <div class="video-container">
+    <div class="video-box">
+      <video controls>  
+        <source src="E-Learning video/Dotnet/01_-_Introduction_To_ASP.Net_Core_6___ASP.Net_Core_MVC___Dotnet_Core_6___ASP.Net_Core_6__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>1. Introduction</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\02_-_Difference_Between_Dotnet_Core_And_Dotnet_Framework___Dotnet_Core_VS_Dotnet_Framework(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>2. Difference Between Dotnet Core And Dotnet Framework</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\03_-_Difference_Between_ASP.NET_And_ASP.NET_Core___ASP.NET_Vs_ASP.NET_Core__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>3. Difference Between ASP.NET And ASP.NET Core</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\04_-_What_Is_MVC_In_ASP.NET_Core_MVC___MVC_In_ASP.NET_Core___ASP.NET_Core_6_Tutorial__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>4. What Is MVC In ASP.NET</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\05_-_How_To_Create_ASP.NET_Core_MVC_Web_App_-_Create_ASP.Net_Core_Project_In_VS_2022__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>5. How To Create ASP.NET</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\06_-_Directory_Structure_ASP.NET_Core_6_-_Project_Structure_-_Work_Flow_ASP.NET_Core__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>6. Directory Structure ASP.NET</p>
+    </div>
+	<div class="video-box">
+	<video controls>
+        <source src="E-Learning video\Dotnet\07_-_Middleware_In_ASP.NET_Core_6___Run_VS_Use_In_ASP.NET_Core___Custom_Middleware__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>7. Middleware In ASP.NET</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\08_-_Routing_In_ASP.NET_Core_6___What_Is_Routing_In_ASP.Net_Core_MVC___Routing_ASP.Net__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>8. Routing In ASP.NET</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\09_-_Convention_Based_Routing_In_ASP.NET_Core_6___Routing_In_ASP.NET_Core_MVC___ASP.NET__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>9. Convention Based Routing</p>
+    </div>
+    <div class="video-box">
+      <video controls>
+        <source src="E-Learning video\Dotnet\10_-_Attribute_Routing_In_ASP.NET_Core_6___Routing_In_ASP.NET_Core_MVC___ASP.NET_Core_6__Hindi_Urdu_(360p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>10. Attribute Routing In ASP.NET</p>
+    </div>
+    
+	
+  </div>
+  
+  <br>
+   <br>
+   <br>
+   <br>
+   <button class="pdf-btn" onclick="goToPDFPage()">PDF</button>
+
+
+    <center>
+  <a href="quizenet.html" class="button">Quize</a>
+
+</center>
+  
+  <script>
+  function goToPDFPage() {
+      window.location.href = "pdfnet.html"; // Go to the PDF list page
+    }
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const sidebar = document.querySelector(".sidebar");
+            const closeButton = document.querySelector(".close-btn");
+
+            function toggleSidebar() {
+                console.log("Sidebar toggled"); // Debugging
+                sidebar.classList.toggle("active");
+            }
+
+            menuToggle.addEventListener("click", toggleSidebar);
+            closeButton.addEventListener("click", toggleSidebar);
+        });
+		function showPdfList() {
+      const listContainer = document.getElementById("pdfList");
+      const list = document.getElementById("pdfLinks");
+      list.innerHTML = ""; // Clear existing
+
+      pdfFiles.forEach(file => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = file;
+        link.onclick = function () {
+          viewPDF(file);
+        };
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+
+      listContainer.style.display = "block";
+    }
+
+    function viewPDF(fileName) {
+      const viewer = document.getElementById("pdfViewer");
+      viewer.src = fileName;
+      viewer.style.display = "block";
+    }
+    </script>
+
+  
+  
+  
+  
+</body>
+</html>

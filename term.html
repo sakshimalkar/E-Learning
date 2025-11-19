@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions Checkbox</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('certificates/terms.jpg');
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .bg-overlay {
+      background-color: rgba(255, 255, 255, 0.9); /* Light overlay for better readability */
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+  <div class="bg-white bg-overlay p-10 rounded-2xl shadow-2xl w-full max-w-xl">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Register</h2>
+    
+    <!-- Terms Checkbox -->
+    <div class="mb-6">
+      <label class="inline-flex items-start space-x-3">
+        <input type="checkbox" id="termsCheckbox" class="mt-1 w-5 h-5">
+        <span class="text-base text-gray-700 leading-relaxed">
+          I agree to the 
+          <a href="#" class="text-blue-600 underline" target="_blank">Terms & Conditions</a>
+          and 
+          <a href="#" class="text-blue-600 underline" target="_blank">Privacy Policy</a>.
+        </span>
+      </label>
+    </div>
+
+    <!-- Register Button -->
+    <button id="registerBtn" class="bg-blue-600 hover:bg-blue-700 transition text-white font-semibold px-6 py-3 rounded-lg w-full disabled:opacity-50" disabled>
+      Register Now
+    </button>
+  </div>
+
+  <!-- JavaScript to enable/disable button -->
+  <script>
+    const checkbox = document.getElementById("termsCheckbox");
+    const registerBtn = document.getElementById("registerBtn");
+
+    checkbox.addEventListener("change", function () {
+      registerBtn.disabled = !this.checked;
+    });
+	 registerBtn.addEventListener("click", function () {
+      // Redirect to your desired page
+      window.location.href = "homepage.html"; // Change this to your target page
+    });
+  </script>
+
+</body>
+</html>
