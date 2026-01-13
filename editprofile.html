@@ -192,43 +192,46 @@
     </form>
 
     <script>
-	 document.addEventListener("DOMContentLoaded", function () {
+	 // Sidebar Toggle
         const menuToggle = document.querySelector(".menu-toggle");
-        const closeButton = document.querySelector(".close-btn");
         const sidebar = document.querySelector(".sidebar");
+        const closeBtn = document.querySelector(".close-btn");
 
-        // Function to toggle sidebar visibility
         function toggleSidebar() {
             sidebar.classList.toggle("active");
         }
 
-        // Open sidebar when clicking menu icon
         menuToggle.addEventListener("click", toggleSidebar);
+        closeBtn.addEventListener("click", toggleSidebar);
 
-        // Close sidebar when clicking the close button (×)
-        closeButton.addEventListener("click", toggleSidebar);
-    });
-	
-	
-	
-	
-         document.addEventListener("DOMContentLoaded", function () {
-            // Pre-fill the input with the stored username if it exists
+        // Load saved name
+        document.addEventListener("DOMContentLoaded", function () {
             let storedName = localStorage.getItem("username");
             if (storedName) {
                 document.getElementById("name").value = storedName;
             }
+        });
 
-            // Handle form submission
-            document.getElementById("edit-profile-form").addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent form submission to refresh the page
+        // FORM VALIDATION (PHONE NUMBER)
+        document.getElementById("edit-profile-form").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-                let newName = document.getElementById("name").value;
-                localStorage.setItem("username", newName); // Save the new name in localStorage
+            let name = document.getElementById("name").value.trim();
+            let phone = document.getElementById("phone").value.trim();
 
-                alert("Profile updated successfully!");
-                window.location.href = "greatprofile.html"; // Redirect back to profile page
-            });
+            // VALID INDIAN PHONE NUMBER: must start with 6, 7, 8, or 9 and must be 10 digits.
+            let phonePattern = /^[6-9]\d{9}$/;
+
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
+                return false;
+            }
+
+            // Save to localStorage
+            localStorage.setItem("username", name);
+
+            alert("Profile updated successfully!");
+            window.location.href = "greatprofile.html";
         });
     </script>
 </body>

@@ -7,7 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function () {
-      emailjs.init("MLe0SLgS-pi9hjnzJ"); // Your public key
+      emailjs.init("xPA3JdfPSN2_tJBXO"); // Your public key
     })();
   </script>
   <style>
@@ -93,55 +93,63 @@
     </div>
   </div>
 
+  
   <script>
-    let generatedOTP = "";
+emailjs.init("xPA3JdfPSN2_tJBXO"); // Only ONE correct public key
 
-    function sendOTP() {
-      const email = document.getElementById("email").value;
-      if (!email) return alert("Please enter your email.");
+let generatedOTP = "";
 
-      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+function sendOTP() {
+    const email = document.getElementById("email").value;
+    if (!email) return alert("Please enter your email.");
 
-      const templateParams = {
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+    const templateParams = {
         to_email: email,
         otp: generatedOTP,
-      };
+    };
 
-      emailjs.send("service_n0qu7jo", "template_gixr1f8", templateParams, "MLe0SLgS-pi9hjnzJ") // <-- Added Public Key
-        .then(() => {
-          alert("OTP sent to your email.");
-          showStep(2);
-        }, (error) => {
-          console.error("Error sending OTP:", error);
-          alert("Failed to send OTP. Check Console.");
-        });
-    }
+    emailjs
+        .send("service_n0qu7jo", "template_gixr1f8", templateParams, "xPA3JdfPSN2_tJBXO")
+        .then(
+            () => {
+                alert("OTP sent to your email.");
+                showStep(2);
+            },
+            (error) => {
+                console.error("Error sending OTP:", error);
+                alert("Failed to send OTP. Check Console.");
+            }
+        );
+}
 
-    function verifyOTP() {
-      const enteredOTP = document.getElementById("otpInput").value;
-      if (enteredOTP === generatedOTP) {
+function verifyOTP() {
+    const enteredOTP = document.getElementById("otpInput").value;
+    if (enteredOTP === generatedOTP) {
         alert("OTP verified!");
         showStep(3);
-      } else {
+    } else {
         alert("Incorrect OTP.");
-      }
     }
+}
 
-    function resetPassword() {
-      const newPass = document.getElementById("newPassword").value;
-      const confirmPass = document.getElementById("confirmPassword").value;
+function resetPassword() {
+    const newPass = document.getElementById("newPassword").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
 
-      if (!newPass || !confirmPass) return alert("Please fill all fields.");
-      if (newPass !== confirmPass) return alert("Passwords do not match.");
+    if (!newPass || !confirmPass) return alert("Please fill all fields.");
+    if (newPass !== confirmPass) return alert("Passwords do not match.");
 
-      alert("Password reset successfully!");
-      window.location.href = "loghtml.html";
-    }
+    alert("Password reset successfully!");
+    window.location.href = "login.html";
+}
 
-    function showStep(step) {
-      document.querySelectorAll(".step").forEach(div => div.classList.remove("active"));
-      document.getElementById("step" + step).classList.add("active");
-    }
-  </script>
+function showStep(step) {
+    document.querySelectorAll(".step").forEach((div) => div.classList.remove("active"));
+    document.getElementById("step" + step).classList.add("active");
+}
+</script>
+
 </body>
 </html>
