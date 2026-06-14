@@ -12,7 +12,7 @@
 
 ## ✨ Live Demo
 
-> 🔗 
+> 🔗 https://sakshimalkar.github.io/E-Learning/
 
 ---
 
@@ -20,12 +20,13 @@
 
 | Homepage | Quiz Section | About Us |
 |----------|--------------|----------|
-| ![Homepage](https://via.placeholder.com/400x200?text=Homepage+Preview) | ![Quiz](https://via.placeholder.com/400x200?text=Quiz+Preview) | ![About](https://via.placeholder.com/400x200?text=About+Preview) |
+| ![Homepage](screenshots/homepageUI.png) | ![Quiz](screenshots/quizUI.png) | ![About](screenshots/aboutusUI.png) |
 
-> *Note: Replace placeholder images with actual screenshots of your project*
+| Profile | Dashboard | Course |
+|---------|-----------|--------|
+| ![Profile](screenshots/profileUI.png) | ![Dashboard](screenshots/dashboardUI.png) | ![Course](screenshots/courseUI.png) |
 
 ---
-
 ## 🚀 Features
 
 ### 👨‍💻 For Students
