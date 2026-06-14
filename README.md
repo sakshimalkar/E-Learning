@@ -20,12 +20,13 @@
 
 | Homepage | Quiz Section | About Us |
 |----------|--------------|----------|
-| ![Homepage](homepageUI.png) | ![Quiz](quizeUI) | ![About](aboutusUI.) | ![profile](profileUI.png) | ![Dashboard](dashboardUI) | ![Course](courseUI.) |
+| ![Homepage](homepageUI.png) | ![Quiz](quizeUI.png) | ![About](aboutusUI.png) |
 
-> *Note: Replace placeholder images with actual screenshots of your project*
+| Profile | Dashboard | Course |
+|---------|-----------|--------|
+| ![Profile](profileUI.png) | ![Dashboard](dashboardUI.png) | ![Course](courseUI.png) |
 
 ---
-
 ## 🚀 Features
 
 ### 👨‍💻 For Students
