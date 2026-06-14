@@ -20,7 +20,7 @@
 
 | Homepage | Quiz Section | About Us |
 |----------|--------------|----------|
-| ![Homepage](screenshots/homepageUI.png) | ![Quiz](screenshots/quizeUI.png) | ![About](screenshots/aboutusUI.png) |
+| ![Homepage](screenshots/homepageUI.png) | ![Quiz](screenshots/quizUI.png) | ![About](screenshots/aboutusUI.png) |
 
 | Profile | Dashboard | Course |
 |---------|-----------|--------|
