@@ -62,12 +62,7 @@
 
 ---
 
-## 📂 Project Structure
-
- 
  # 📚 Learnify — E-Learning Platform
-
-> *Transform your career through quality education — anytime, anywhere.*
 
 ---
 
