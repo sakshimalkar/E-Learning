@@ -1,604 +1,468 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About us</title>
+  <title>About Us - E-Learning Platform</title>
   
-<link rel="stylesheet" 
-          href=
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-
-    <style>
-        /* Reset default margins and paddings */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-			 background-image: url('certificates/color.jpeg');
-		background-size: cover;
-		
-		background-position: center;
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            position: fixed;
-            top: 0px;
-            left: -250px; /* Hidden by default */
-            width: 230px;
-            height: 100vh; /* Full viewport height */
-            background-color: #f0f0f0;
-            padding: 15px 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease;
-            z-index: 999; /* Ensure it's above the content */
-        }
-
-        .sidebar.active {
-            left: 0; /* Slide in the sidebar */
-        }
-		
-		.sidebar a:hover {
-            background-color: #007BFF;
-            color: white;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: black;
-            font-size: 22px;
-            font-weight: bold;
-            padding: 15px 20px;
-            border-radius: 10px;
-            transition: background-color 0.2s ease;
-        }
-
-        
-
-        /* Hamburger icon */
-        .menu-toggle {
-            position: fixed;
-            top: 5px;
-            left: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-       .close-btn {
-            font-size: 24px;
-            color: black;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
-
-
-
-
-
-
-    /* General Styling */
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5ff;
-    color: #333;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto; /* Prevent horizontal overflow */
-}
-
-
-    /* Header Styling */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	  
-    }
-
-    header .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #555;
-    }
-
-    header .logo span {
-      color: #aa00ff;
-    }
-
-    header .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 50px 20px;
-	  max-width: 700px;
-	  margin: 0 auto;
-	  
-	  padding: 30px;
-	  text-align: center;
-	  position: relative;
-    left: 500px;
-	  
-	  
-	  
-	  
-	  
-	  
-    }
-
-    .hero h1 {
-      font-size: 2em;
-      color: #333;
-    }
-
-    .hero h1 span {
-      color: #5a00c3;
-    }
-
-    .hero p {
-      font-size: 1.2em;
-      margin: 20px 0;
-      color: #666;
-    }
-
-    /* Illustration */
-    .hero .illustration {
-      margin-top: 30px;
-      position: relative;
-   }
-
-    .hero .illustration img {
-      width: 450px;
-      border-radius: 20px;
-    }
-
-    .cloud {
-      position: absolute;
-      background: skyblue;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	  
-    }
-
-    .cloud.small {
-      position: absolute;
-    background: #5a00c3;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 40px;
-    height: 40px;
-    top: 20px;
-    left: 30px;
-    }
-
-    .cloud.large {
-      position: absolute;
-    background: #5a00c3;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 70px;
-    height: 70px;
-    top: 150px;
-    right: 10px; 
-    }
- 
-
-
-
- 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-			
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .logo .highlight {
-            color: #a046fc;
-        }
-
-        .theme-toggle {
-            font-size: 1.2rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .about-us, .our-approach, .key-features, .mission {
-            padding: 2rem;
-            margin: 1rem auto;
-            max-width: 800px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			
-			
-    position: relative;
-    left: 500px;
-        }
-
-        h1, h2 {
-            color: #a046fc;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        h1 .highlight, h2 .highlight {
-            color: #333;
-        }
-
-        p {
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            font-size: 1rem;
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-        }
-
-        li::before {
-            content: "•";
-            color: #a046fc;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .mission p {
-            text-align: center;
-            font-size: 1.2rem;
-        }
-		
-		
-		
-		 /* General Reset */
+  <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Body Styling */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fef9ff 0%, #f0f4ff 100%);
+      overflow-x: hidden;
     }
 
-    /* Header Styling */
-    .header {
+    /* Sidebar Styling - LIGHT COLOR */
+     .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: #ece9f9;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 999;
     }
 
-    .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #7c3aed;
+    .sidebar.active {
+      left: 0;
     }
 
-    .logo span {
-      color: #3498db;
+    .sidebar a:hover {
+      background-color: #007BFF;
+      color: white;
     }
 
-    .theme-toggle {
-      font-size: 1.2em;
-      cursor: pointer;
-    }
-
-    /* Mission Section */
-    .mission-section {
-      text-align: center;
-      margin: 50px 20px;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .mission-image {
-      width: 80px;
-      margin-bottom: 20px;
-    }
-
-    .mission-title {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .mission-text {
-      font-size: 1em;
-      line-height: 1.6;
-      color: #555;
-    }
-		
-		
-		
-		
-		
-		
-		 body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-	  
-    }
-
-    header {
-      background-color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #5e17eb;
-    }
-
-    header h1 span {
-      color: #007bff;
-    }
-
-    header .icon {
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .content {
-      padding: 20px;
-    }
-
-    .footer {
-    background-color: #f0eaff;
-    padding: 20px;
-    text-align: center;
-    position: relative; /* Allows positional adjustments */
-    left: 500px; /* Moves the footer to the right */
-    width: calc(100% - 40px); /* Keeps the width within the viewport */
-    box-sizing: border-box;
-	
-}
-
-
-    .footer h2 {
-      color: #5e17eb;
-      margin-bottom: 10px;
-    }
-
-    .footer .social-icons a {
-      margin: 0 10px;
+    .sidebar a {
       text-decoration: none;
-      color: #5e17eb;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 5px;
+      left: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    /* Main Content Container */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    /* Hero Section - LIGHT & BRIGHT */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+      border-radius: 40px;
+      margin-bottom: 50px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      position: relative;
+	  color: white;
+    }
+
+    .hero h1 span {
+      color: #ffe066;
+    }
+
+    .hero p {
       font-size: 20px;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
     }
 
-    .footer p {
-      font-size: 12px;
+    .illustration {
+      margin-top: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .illustration img {
+      width: 350px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s;
+    }
+
+    .illustration img:hover {
+      transform: scale(1.02);
+    }
+
+    .cloud {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .cloud.small {
+      width: 50px;
+      height: 50px;
+      top: -20px;
+      left: -30px;
+    }
+
+    .cloud.large {
+      width: 80px;
+      height: 80px;
+      bottom: -30px;
+      right: -40px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Card Sections - LIGHT & WHITE */
+    .about-us, .our-approach, .key-features, .mission {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      margin-bottom: 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f0f0f0;
+    }
+
+    .about-us:hover, .our-approach:hover, .key-features:hover, .mission:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1);
+    }
+
+    h1, h2 {
+      background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    .about-us p, .mission p {
       color: #555;
+      line-height: 1.8;
+      font-size: 16px;
     }
 
-    .footer .links {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer .links ul {
+    /* Lists */
+    .our-approach ul, .key-features ul {
       list-style: none;
       padding: 0;
     }
 
-    .footer .links ul li {
+    .our-approach li, .key-features li {
+      padding: 12px 0;
+      font-size: 16px;
+      color: #444;
+      border-bottom: 1px solid #f5f5f5;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .our-approach li:last-child, .key-features li:last-child {
+      border-bottom: none;
+    }
+
+    .our-approach li::before, .key-features li::before {
+      content: "✨";
+      font-size: 20px;
+    }
+
+    /* Mission Image */
+    .mission-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Footer - LIGHT */
+    .footer {
+      background: #f8f9ff;
+      padding: 50px 40px 30px;
+      border-radius: 30px 30px 0 0;
+      margin-top: 50px;
+      border-top: 1px solid #e8e8f0;
+    }
+
+    .footer h2 {
+      color: #503ce8;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      margin-bottom: 20px;
+	  text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+
+    .social-icons img {
+      border-radius: 50%;
+      transition: box-shadow 0.3s;
+    }
+
+    .footer p {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .links ul {
+      list-style: none;
+    }
+
+    .links ul li strong {
+      color: #503ce8;
+      font-size: 16px;
+    }
+
+    .links ul li {
       margin-bottom: 10px;
     }
 
-    .footer .links ul li a {
+    .links ul li a {
       text-decoration: none;
-      color: #333;
+      color: #666;
       font-size: 14px;
+      transition: color 0.3s;
     }
 
-    .footer .links ul li a:hover {
-      text-decoration: underline;
+    .links ul li a:hover {
+      color: #6c5ce7;
     }
-			
-		
-    </style>
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero p {
+        font-size: 16px;
+      }
+      
+      .illustration img {
+        width: 250px;
+      }
+      
+      .about-us, .our-approach, .key-features, .mission {
+        padding: 25px;
+      }
+      
+      .links {
+        gap: 40px;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .main-container {
+        padding: 20px 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Hamburger Icon -->
-    <div class="menu-toggle">
-        <i class="fa fa-bars"></i>
-    </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-	<span class="close-btn" onclick="toggleSidebar()">&times;</span>
-        <a href="homepage.html">HOME</a>
-        <a href="coursetable.html">COURSES</a>
-        <a href="paymentdirect.html">PAYMENT</a>
-        <a href="greatprofile.html">PROFILE</a>
-        <a href="aboutus.html">ABOUT US</a>
-    </div>
+  <!-- Hamburger Icon -->
+<div class="menu-toggle">
+  <i class="fa fa-bars"></i>
+</div>
 
-        <div class="tab-content-container">
+ <!-- Sidebar -->
+<div class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <a href="homepage.html">HOME</a>
+  <a href="coursetable.html">COURSES</a>
+  <a href="paymentdirect.html">PAYMENT</a>
+  <a href="greatprofile.html">PROFILE</a>
+  <a href="aboutus.html">ABOUT US</a>
+</div>
 
-  
-  
+  <div class="main-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Transforming Lives <span>Through Learning</span></h1>
+      <p>We envision a world where anyone, anywhere has the power to transform their lives through learning.</p>
+      <div class="illustration">
+        <img src="certificates/e learning.jpg" alt="elearning image">
+        <div class="cloud small"></div>
+        <div class="cloud large"></div>
+      </div>
+    </section>
 
-  <section class="hero">
-    <h1>Transforming Lives <span>Through Learning</span></h1>
-    <p>We envision a world where anyone, anywhere has the power to transform their lives through learning.</p>
-    <div class="illustration">
-      <img src="D:\elearning\certificates\e learning.jpg" alt="elearning image">
-      <div class="cloud small"></div>
-      <div class="cloud large"></div>
-    </div>
-  </section>
-
-
-    
-
+    <!-- About Us -->
     <section class="about-us">
-        <h1>About Us<span class="highlight"></span></h1>
-        <p>Welcome to our innovative E-Learning platform, designed to revolutionize the way you learn programming and technology-related content.</p>
+      <h1>About Us</h1>
+      <p>Welcome to our innovative E-Learning platform, designed to revolutionize the way you learn programming and technology-related content.</p>
     </section>
 
+    <!-- Our Approach -->
     <section class="our-approach">
-        <h2>Our Approach</h2>
-        <ul>
-		
-
-
-            <li>🎯 Personalized learning experiences</li>
-            <li>✨ Engaging Learning: We create interactive, fun, and impactful eLearning experiences.</li>
-            <li>🔨 Hands-on, project-based curriculum</li>
-            <li>✨ Engaging Learning: We create interactive, fun, and impactful eLearning experiences.</li>
-            <li>📈 Continuous improvement and adaptation</li>
-        </ul>
+      <h2>Our Approach</h2>
+      <ul>
+        <li>🎯 Personalized learning experiences</li>
+        <li>✨ Engaging Learning: We create interactive, fun, and impactful eLearning experiences.</li>
+        <li>🔨 Hands-on, project-based curriculum</li>
+        <li>🎮 Gamified learning paths</li>
+        <li>📈 Continuous improvement and adaptation</li>
+      </ul>
     </section>
 
+    <!-- Key Features -->
     <section class="key-features">
-        <h2>Key Features</h2>
-        <ul>
-			<li>📖 Expert Content: Lessons from industry professionals.</li>
-			<li>🎮 Interactive Tools: Videos, quizzes, and gamified elements to boost engagement.</li>
-			<li>🔒 Track Progress: Stay on top of your goals with personalized insights.</li>
-            
-        </ul>
+      <h2>Key Features</h2>
+      <ul>
+        <li>📖 Expert Content: Lessons from industry professionals.</li>
+        <li>🎮 Interactive Tools: Videos, quizzes, and gamified elements to boost engagement.</li>
+        <li>🔒 Track Progress: Stay on top of your goals with personalized insights.</li>
+      </ul>
     </section>
 
-
+    <!-- Mission -->
     <section class="mission">
-        <h2>Our Mission</h2>
-		<img src="D:\elearning\certificates\mission.jpg" alt="Mission Illustration" class="mission-image" style="width:500px; height:300px;">
-        <p>💡 Our mission: Empower learners to succeed through innovative eLearning solutions.
-😊 Join us and make learning a joyful journey!</p>
+      <h2>Our Mission</h2>
+      <img src="certificates/mission.jpg" alt="Mission Illustration" class="mission-image">
+      <p>💡 Our mission: Empower learners to succeed through innovative eLearning solutions.<br>😊 Join us and make learning a joyful journey!</p>
     </section>
-
-  
-  
-   
-  
-  
-   
- 
-  
-  <div class="content">
-    <!-- Content goes here -->
   </div>
+
+  <!-- Footer -->
   <footer class="footer">
     <h2>E-Learning</h2>
     <div class="social-icons">
-	
-	
-	<a href="https://www.instagram.com/" target="_blank" rel="noopener">
-  <center>  <img src="D:\elearning\certificates\instagram.jpg" height="50" width="50"></center>
-</a>
-	
-	
-	<a href="https://www.facebook.com/profile.php?id=61571218281371&sk=about" target="_blank" rel="noopener">
-  <center>  <img src="D:\elearning\certificates\facebook (3).jpg"height="50" width="50"></center>
-</a>
-	
-	
-	
-
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <img src="certificates/instagram.jpg" height="50" width="50" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61571218281371&sk=about" target="_blank" rel="noopener">
+        <img src="certificates/facebook (3).jpg" height="50" width="50" alt="Facebook">
+      </a>
     </div>
-    <p>© 2024 elearning.in <br> elearning is a registered trademark of elearning.co</p>
+    <p>© 2025 YourElearnSite. All rights reserved.</p>
     <div class="links">
       <ul>
         <li><strong>Courses</strong></li>
-        
-        <li><a href="#">Virtual classroom courses</a></li>
-        <li><a href="#">E-learning courses</a></li>
-        <li><a href="#">Video courses</a></li>
+        <li>Virtual classroom courses</li>
+        <li>E-learning courses</li>
+        <li>Video courses</li>
       </ul>
       <ul>
         <li><strong>Community</strong></li>
-        <li><a href="#">Learners</a></li>
-        
-        <li><a href="#">Developers</a></li>
-        
+        <li>Learners</li>
+        <li>Developers</li>
       </ul>
     </div>
   </footer>
+
   <script>
-         document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const closeButton = document.querySelector(".close-btn");
-        const sidebar = document.querySelector(".sidebar");
+   document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const closeButton = document.querySelector(".close-btn");
+    const sidebar = document.querySelector(".sidebar");
 
-        // Function to toggle sidebar visibility
-        function toggleSidebar() {
-            sidebar.classList.toggle("active");
-        }
+    function toggleSidebar() {
+      sidebar.classList.toggle("active");
+    }
 
-        // Open sidebar when clicking menu icon
-        menuToggle.addEventListener("click", toggleSidebar);
+    menuToggle.addEventListener("click", toggleSidebar);
+    closeButton.addEventListener("click", toggleSidebar);
+  });
 
-        // Close sidebar when clicking the close button (×)
-        closeButton.addEventListener("click", toggleSidebar);
-    });
-    </script>
+  </script>
 
 </body>
 </html>

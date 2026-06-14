@@ -10,15 +10,19 @@
       font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       background-image: url('certificates/quize.jpeg');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      margin: 0;
+      padding: 20px;
     }
     .container {
       width: 450px;
+      max-width: 100%;
       padding: 20px;
-      margin-top: 80px;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       border-radius: 20px;
@@ -86,39 +90,83 @@
     let score = 0;
     let timeLeft = 300;
     let timerInterval;
+    let quizEnded = false;
 
     function displayQuestion() {
+      if (quizEnded) return;
       const questionData = quizData[currentQuestion];
-      quizContainer.innerHTML = `<div class='question'>${questionData.question}</div>` +
-        questionData.options.map(option => `<label class='option'><input type='radio' name='quiz' value='${option}'> ${option}</label>`).join('');
+      let optionsHtml = '';
+      questionData.options.forEach(option => {
+        optionsHtml += `<label class='option'><input type='radio' name='quiz' value='${option.replace(/'/g, "\\'")}'> ${option}</label>`;
+      });
+      quizContainer.innerHTML = `<div class='question'>${questionData.question}</div>${optionsHtml}`;
     }
 
     function checkAnswer() {
-      if (timeLeft <= 0) return;
+      if (quizEnded) return;
+      
+      if (timeLeft <= 0) {
+        displayResult();
+        return;
+      }
+      
       const selectedOption = document.querySelector('input[name="quiz"]:checked');
-      if (selectedOption) {
-        if (selectedOption.value === quizData[currentQuestion].answer) score++;
-        currentQuestion++;
-        currentQuestion < quizData.length ? displayQuestion() : displayResult();
-      } else {
+      if (!selectedOption) {
         alert("Please select an option before submitting.");
+        return;
+      }
+      
+      if (selectedOption.value === quizData[currentQuestion].answer) {
+        score++;
+      }
+      
+      currentQuestion++;
+      
+      if (currentQuestion < quizData.length) {
+        displayQuestion();
+      } else {
+        displayResult();
       }
     }
 
     function displayResult() {
+      if (quizEnded) return;
+      quizEnded = true;
       clearInterval(timerInterval);
+      
       quizContainer.style.display = 'none';
       submitButton.disabled = true;
       examformButton.disabled = false;
-      resultContainer.innerHTML = `Time Over or Quiz Completed!<br>You scored ${score} out of ${quizData.length}.`;
+      
+      const percentage = (score / quizData.length) * 100;
+      let message = "";
+      
+      if (percentage >= 80) {
+        message = "🎉 Excellent! You passed! 🎉";
+      } else if (percentage >= 60) {
+        message = "👍 Good job! You passed! 👍";
+      } else if (percentage >= 40) {
+        message = "📚 You passed! Keep improving! 📚";
+      } else {
+        message = "❌ Sorry, you did not pass! ❌";
+      }
+      
+      resultContainer.innerHTML = `${message}<br><br>You scored ${score} out of ${quizData.length}.<br>Percentage: ${percentage}%`;
+      
       localStorage.setItem('quizScore', score);
-      localStorage.setItem('userName', 'Sakshi'); // Replace with dynamic value if needed
-      localStorage.setItem('courseName', 'Java Programming'); // Replace with actual course
+      localStorage.setItem('totalQuestions', quizData.length);
+      localStorage.setItem('quizPercentage', percentage);
+      localStorage.setItem('quizPassed', percentage >= 40 ? "true" : "false");
+      localStorage.setItem('userName', 'Sakshi');
+      localStorage.setItem('courseName', 'Java Programming');
     }
 
     function startTimer() {
       timerInterval = setInterval(() => {
+        if (quizEnded) return;
+        
         if (timeLeft <= 0) {
+          clearInterval(timerInterval);
           displayResult();
         } else {
           timeLeft--;

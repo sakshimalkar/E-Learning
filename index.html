@@ -3,148 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overview Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>E-Learning Platform | Amplify Your Career</title>
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 10;
-            background-color: #f4f4f9;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
         header {
-            background-color: #6a11cb;
-            color: white;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         header .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        
+        header .logo img {
+            width: 100px;
+            height: 70px;
+			margin-left: -30px;
+			margin-top: -10px;
+			margin-bottom: -10px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
 
+        /* Hero Section */
         .hero {
-              background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover no-repeat;
-            color: white;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), 
+                        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover fixed no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 75px 20px;
-			margin-top: -72px;
-			position: absolute;
-            top: 50%;
-			height:250px;
-            left: 50%;
-            width: 100%;
-            transform: translate(-50%,-50%);-
-        }
-		span{
-			text-transform: uppercase;
-            display: block;
-		}
-
-        .h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-			 font-weight: bold;
-            letter-spacing: 8px;
-            color: black;
-            background: white;
+            padding: 0 20px;
             position: relative;
-            animation: text 4s infinite;
+            margin-top: 0;
         }
 
-        .p {
-            font-size: 25px;
-            margin-bottom: 50px;
-			color: white;
+        .hero-content {
+            animation: fadeInUp 1s ease;
         }
-		 @keyframes text{
-            0%{
-                color: white;
-                margin-bottom: -40px;
-            }30%{
-                letter-spacing: 30px;
-                margin-bottom: -40px;
-            }80%{
-                letter-spacing: 8px;
-                margin-bottom: -40px;
-            }100%{
-                margin-bottom: 20px;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        .hero button {
-            padding: 20px 40px;
-            font-size: 20px;
-            color: #6a11cb;
-            background-color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-			
+
+        .hero span {
+            display: block;
         }
 
+        .hero .h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255,255,255,0.6);
+            }
+        }
+
+        .hero .p {
+            font-size: 28px;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .hero button {
+            padding: 18px 50px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: #764ba2;
+        }
+
+        .hero button:active {
+            transform: translateY(0);
+        }
+
+        .hero button a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Features Section */
         .features {
+            background: #f8f9fa;
+            padding: 80px 50px;
             display: flex;
             justify-content: center;
-            gap: 80px;
-			margin-top: 400px;
-            padding: 50px 30px;
+            gap: 50px;
+            flex-wrap: wrap;
         }
 
         .feature-card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            width: 300px;
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 320px;
             text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.3s; }
+        .feature-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
 
         .feature-card img {
-            width: 200px;
-            margin-bottom: 20px;
+            width: 170px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 40%;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
         }
 
-       
+        .feature-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Tabs Section - FIXED */
+        .tab-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .tabs {
+            flex: 3;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 0;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 20px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            color: rgba(255,255,255,0.7);
+            font-size: 18px;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .tab-button:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding-left: 35px;
+        }
+
+        .tab-button.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-left: 4px solid white;
+            font-weight: bold;
+        }
+
+        .tab-content-container {
+            flex: 7;
+            padding: 40px;
+            background: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .tab-content p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* FOOTER - FIXED */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            position: relative;
+            width: 100%;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero .h1 {
+                font-size: 36px;
+                letter-spacing: 2px;
+            }
+            
+            .hero .p {
+                font-size: 20px;
+            }
+            
+            .features {
+                padding: 50px 20px;
+                gap: 30px;
+            }
+            
+            .feature-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .tab-container {
+                flex-direction: column;
+                margin: 40px 20px;
+            }
+            
+            .tabs {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            
+            .tab-button {
+                text-align: center;
+                white-space: nowrap;
+            }
+            
+            header {
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                font-size: 20px;
+            }
+
+            header .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            footer .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero .h1 {
+                font-size: 28px;
+            }
+            
+            .hero .p {
+                font-size: 16px;
+            }
+            
+            .hero button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">E-Learning Platfrom</div>
-        
+        <div class="logo">
+            <img src="certificates/logo.png" alt="logo">
+            🎓 E-Learning Platform
+        </div>
     </header>
 
     <section class="hero">
-        <span class="h1" >It's time to amplify your Online Career</span>
-        <span class="p">Join us to unlock your potential and reach your career goals.</span>
-        <button><a href="registration.html" style="text-decoration:none;">Register Now</a></button>
+        <div class="hero-content">
+            <span class="h1">It's time to amplify your Online Career</span>
+            <span class="p">Join us to unlock your potential and reach your career goals.</span>
+            <button><a href="registration.html">🚀 Register Now</a></button>
+        </div>
     </section>
 
     <section class="features">
         <div class="feature-card">
-            <img src="C:\Users\saksh\Desktop\elearning\E-Learning project\certificates\Instructor.avif">
-            <h3>Expert Instructors</h3>
-            <p>Gain practical skills from highly qualified instructors
-			with real industry experience..</p>
+            <img src="certificates/instructor.avif" alt="Expert Instructors">
+            <h3>👨‍🏫 Expert Instructors</h3>
+            <p>Gain practical skills from highly qualified instructors with real industry experience.</p>
         </div>
         <div class="feature-card">
-             <img src="C:\Users\saksh\Desktop\elearning\E-Learning project\certificates\content.jpg">
-            <h3>Quality Content</h3>
-            <p>High-quality, updated content tailored for clear and
-			effective learning.</p>
+            <img src="certificates/content.jpg" alt="Quality Content">
+            <h3>📚 Quality Content</h3>
+            <p>High-quality, updated content tailored for clear and effective learning.</p>
         </div>
         <div class="feature-card">
-             <img src="C:\Users\saksh\Desktop\elearning\E-Learning project\certificates\lifetime.jpg">
-            <h3>Lifetime Access</h3>
+            <img src="certificates/lifetime.png" alt="Lifetime Access">
+            <h3>♾️ Lifetime Access</h3>
             <p>Enjoy permanent access to all lessons whenever you need them.</p>
         </div>
     </section>
 
-    
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab(event, 'tab1')">📖 Our Courses</button>
+            <button class="tab-button" onclick="showTab(event, 'tab2')">🎯 Why Choose Us</button>
+            <button class="tab-button" onclick="showTab(event, 'tab3')">💡 Learning Path</button>
+        </div>
+        <div class="tab-content-container">
+            <div id="tab1" class="tab-content active">
+                <h2>📖 Our Courses</h2>
+                <p>✅ Web Development (HTML, CSS)</p>
+                <p>✅ Dot Net Development</p>
+                <p>✅ Java Programming</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <h2>🎯 Why Choose Us</h2>
+                <p>✅ Industry-recognized certifications</p>
+                <p>✅ 24/7 support & doubt clearing</p>
+                <p>✅ Study Material Quize & notes</p>
+                <p>✅ Flexible learning schedules</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <h2>💡 Your Learning Path</h2>
+                <p>📌 Step 1: Register Now</p>
+                <p>📌 Step 2: Choose your desired course</p>
+                <p>📌 Step 3: Take Notes & Quize</p>
+                <p>📌 Step 4: Get certified & build portfolio</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 YourElearnSite. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="term.html">Terms & Conditions</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="contactus.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(event, tabId) {
+            // Hide all tabs
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remove active class from all buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show selected tab and mark button as active
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
