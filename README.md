@@ -20,7 +20,7 @@
 
 | Homepage | Quiz Section | About Us |
 |----------|--------------|----------|
-| ![Homepage](https://via.placeholder.com/400x200?text=Homepage+Preview) | ![Quiz](https://via.placeholder.com/400x200?text=Quiz+Preview) | ![About](https://via.placeholder.com/400x200?text=About+Preview) |
+| ![Homepage](homepageUI.png) | ![Quiz](quizeUI) | ![About](aboutusUI.) | ![profile](profileUI.png) | ![Dashboard](dashboardUI) | ![Course](courseUI.) |
 
 > *Note: Replace placeholder images with actual screenshots of your project*
 
