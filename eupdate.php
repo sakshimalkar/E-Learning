@@ -44,7 +44,7 @@ if ($id) {
 </head>
 <body>
     <h1>Edit Enrollment</h1>
-    <form method="POST">
+    <form method="get">
         <label>Name:</label>
         <input type="text" name="name" value="<?= $record['name'] ?>" required><br>
         <label>Course:</label>

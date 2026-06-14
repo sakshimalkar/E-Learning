@@ -75,7 +75,7 @@ $conn->close();
 </head>
 <body>
     <h2>Edit Login</h2>
-    <form method="POST">
+    <form method="get">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="<?= htmlspecialchars($record['username'] ?? '') ?>" required><br><br>
 

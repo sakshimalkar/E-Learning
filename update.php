@@ -57,7 +57,7 @@ $conn->close();
 </head>
 <body>
     <h1>Update Registration</h1>
-    <form method="POST">
+    <form method="get">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<?= htmlspecialchars($record['Name'] ?? '') ?>" required><br><br>
 

@@ -48,7 +48,7 @@ $conn->close();
         <h2>Exam Records</h2>
 
         <!-- Course Filter Form -->
-        <form method="POST">
+        <form method="get">
             <label for="courseFilter">Select Course:</label>
             <select id="courseFilter" name="course_name" class="form-control" style="width: 300px;" onchange="this.form.submit()">
                 <option value="">All Courses</option>

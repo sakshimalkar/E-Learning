@@ -55,7 +55,7 @@ $conn->close();
 
     <?php if ($message) echo "<p>$message</p>"; ?>
 
-    <form method="post">
+    <form method="get">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($payment_id); ?>">
 
         <label for="student_name">Student Name:</label>

@@ -24,7 +24,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 ?>
 
-<form method="post">
+<form method="get">
     <input type="hidden" name="id" value="<?= $row['id'] ?>">
     User Name: <input type="text" name="username" value="<?= $row['username'] ?>" required><br>
     Course Name: <input type="text" name="course_name" value="<?= $row['course_name'] ?>" required><br>

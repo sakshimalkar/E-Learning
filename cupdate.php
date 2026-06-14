@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<form method="post">
+<form method="get">
     <label>Course Name:</label>
     <input type="text" name="course_name" value="<?php echo $row['course_name']; ?>" required><br>
     

@@ -83,7 +83,7 @@
 
 </head>
 <body>
-  <form action="http://localhost/elearning/create.php" method="POST">
+  <form action="http://localhost/elearning/create.php" method="get">
 
 
 
