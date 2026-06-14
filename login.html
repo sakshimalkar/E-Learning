@@ -141,12 +141,11 @@ input[type="checkbox"] {
     </form>
   </div>
   <script>
-   document.querySelector('form').addEventListener('submit', function () {
-            // Save the name in localStorage
-            let name = document.getElementById('name').value;
-            localStorage.setItem('username', name);
-        });
-    </script>
+  document.querySelector('form').addEventListener('submit', function () {
+    let name = document.getElementById('username').value;
+    localStorage.setItem('username', name);
+  });
+</script>
 
 </body>
 </html>
