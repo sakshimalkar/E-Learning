@@ -20,11 +20,11 @@
 
 | Homepage | Quiz Section | About Us |
 |----------|--------------|----------|
-| ![Homepage](homepageUI.png) | ![Quiz](quizeUI.png) | ![About](aboutusUI.png) |
+| ![Homepage](screenshots/homepageUI.png) | ![Quiz](screenshots/quizeUI.png) | ![About](screenshots/aboutusUI.png) |
 
 | Profile | Dashboard | Course |
 |---------|-----------|--------|
-| ![Profile](profileUI.png) | ![Dashboard](dashboardUI.png) | ![Course](courseUI.png) |
+| ![Profile](screenshots/profileUI.png) | ![Dashboard](screenshots/dashboardUI.png) | ![Course](screenshots/courseUI.png) |
 
 ---
 ## 🚀 Features
